@@ -75,7 +75,7 @@ class DialogPresenterCentered : NSObject, DialogPresenter {
             dialog.preferredModalWidthConstraint = dialog.modalWrapper.autoSet(dimension: .width, toSize: dialog.preferredModalWidth)
         }
         NSLayoutConstraint.autoSet(priority: 998) {
-            dialog.modalWrapper.autoCenterInSuperview()
+            dialog.modalWrapper.autoCenter()
         }
         dialog.modalWrapper.autoPinEdge(toSuperviewEdge: .top, withInset: 20, relation: NSLayoutRelation.greaterThanOrEqual)
         

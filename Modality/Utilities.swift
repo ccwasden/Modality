@@ -313,7 +313,7 @@ extension UIView {
      
      @return An array of constraints added.
      */
-    @discardableResult func autoCenterInSuperview() -> [NSLayoutConstraint] {
+    @discardableResult func autoCenter() -> [NSLayoutConstraint] {
         translatesAutoresizingMaskIntoConstraints = false
         return [
             autoAlignAxis(toSuperviewAxis: .vertical),

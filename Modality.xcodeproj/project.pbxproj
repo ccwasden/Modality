@@ -16,12 +16,13 @@
 		A02609121D99DC3800C4C6FF /* ModalityTestAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A02609111D99DC3800C4C6FF /* ModalityTestAppUITests.swift */; };
 		A026091A1D99DC3F00C4C6FF /* Modality.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A02608EB1D99DC1C00C4C6FF /* Modality.framework */; };
 		A026091B1D99DC3F00C4C6FF /* Modality.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A02608EB1D99DC1C00C4C6FF /* Modality.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		A02609251D99DC5A00C4C6FF /* DialogManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A026091F1D99DC5A00C4C6FF /* DialogManager.swift */; };
+		A02609251D99DC5A00C4C6FF /* Modality.swift in Sources */ = {isa = PBXBuildFile; fileRef = A026091F1D99DC5A00C4C6FF /* Modality.swift */; };
 		A02609261D99DC5A00C4C6FF /* UIButton+Block.swift in Sources */ = {isa = PBXBuildFile; fileRef = A02609201D99DC5A00C4C6FF /* UIButton+Block.swift */; };
 		A02609271D99DC5A00C4C6FF /* DefaultsStyleKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = A02609211D99DC5A00C4C6FF /* DefaultsStyleKit.swift */; };
 		A02609281D99DC5A00C4C6FF /* Buttons.swift in Sources */ = {isa = PBXBuildFile; fileRef = A02609221D99DC5A00C4C6FF /* Buttons.swift */; };
 		A02609291D99DC5A00C4C6FF /* FontsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A02609231D99DC5A00C4C6FF /* FontsManager.swift */; };
 		A026092A1D99DC5A00C4C6FF /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = A02609241D99DC5A00C4C6FF /* Utilities.swift */; };
+		A026092E1D99E9E400C4C6FF /* AutoLayoutUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = A026092D1D99E9E400C4C6FF /* AutoLayoutUtilities.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,12 +70,13 @@
 		A026090D1D99DC3800C4C6FF /* ModalityTestAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ModalityTestAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A02609111D99DC3800C4C6FF /* ModalityTestAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalityTestAppUITests.swift; sourceTree = "<group>"; };
 		A02609131D99DC3800C4C6FF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		A026091F1D99DC5A00C4C6FF /* DialogManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DialogManager.swift; sourceTree = "<group>"; };
+		A026091F1D99DC5A00C4C6FF /* Modality.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Modality.swift; sourceTree = "<group>"; };
 		A02609201D99DC5A00C4C6FF /* UIButton+Block.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIButton+Block.swift"; sourceTree = "<group>"; };
 		A02609211D99DC5A00C4C6FF /* DefaultsStyleKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultsStyleKit.swift; sourceTree = "<group>"; };
 		A02609221D99DC5A00C4C6FF /* Buttons.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Buttons.swift; sourceTree = "<group>"; };
 		A02609231D99DC5A00C4C6FF /* FontsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FontsManager.swift; sourceTree = "<group>"; };
 		A02609241D99DC5A00C4C6FF /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
+		A026092D1D99E9E400C4C6FF /* AutoLayoutUtilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoLayoutUtilities.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,12 +130,13 @@
 			children = (
 				A02608EE1D99DC1C00C4C6FF /* Modality.h */,
 				A02608EF1D99DC1C00C4C6FF /* Info.plist */,
-				A026091F1D99DC5A00C4C6FF /* DialogManager.swift */,
+				A026091F1D99DC5A00C4C6FF /* Modality.swift */,
 				A02609201D99DC5A00C4C6FF /* UIButton+Block.swift */,
 				A02609211D99DC5A00C4C6FF /* DefaultsStyleKit.swift */,
 				A02609221D99DC5A00C4C6FF /* Buttons.swift */,
 				A02609231D99DC5A00C4C6FF /* FontsManager.swift */,
 				A02609241D99DC5A00C4C6FF /* Utilities.swift */,
+				A026092D1D99E9E400C4C6FF /* AutoLayoutUtilities.swift */,
 			);
 			path = Modality;
 			sourceTree = "<group>";
@@ -311,8 +314,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				A026092A1D99DC5A00C4C6FF /* Utilities.swift in Sources */,
+				A026092E1D99E9E400C4C6FF /* AutoLayoutUtilities.swift in Sources */,
 				A02609271D99DC5A00C4C6FF /* DefaultsStyleKit.swift in Sources */,
-				A02609251D99DC5A00C4C6FF /* DialogManager.swift in Sources */,
+				A02609251D99DC5A00C4C6FF /* Modality.swift in Sources */,
 				A02609291D99DC5A00C4C6FF /* FontsManager.swift in Sources */,
 				A02609261D99DC5A00C4C6FF /* UIButton+Block.swift in Sources */,
 				A02609281D99DC5A00C4C6FF /* Buttons.swift in Sources */,

@@ -39,11 +39,11 @@ public extension UIWindow {
 //    var beforePresent:(()->Void)?
 //    var afterPresent:(()->Void)?
 //    func setInitialModalWrapperConstraints(_ dialog:Dialog) {
-//        dialog.modalWrapper.autoPinEdgesToSuperviewEdges(with: UIEdgeInsets.zero)
-//        NSLayoutConstraint.autoSetPriority(999) { () -> Void in
-//            dialog.preferredModalWidthConstraint = dialog.modalWrapper.autoSetDimension(.width, toSize: CGFloat(dialog.preferredModalWidth))
+//        dialog.modalWrapper.layoutPinEdgesToSuperviewEdges(with: UIEdgeInsets.zero)
+//        NSLayoutConstraint.layoutSetPriority(999) { () -> Void in
+//            dialog.preferredModalWidthConstraint = dialog.modalWrapper.layoutSetDimension(.width, toSize: CGFloat(dialog.preferredModalWidth))
 //        }
-//        dialog.modalWrapper.autoCenterInSuperview()
+//        dialog.modalWrapper.layoutCenterInSuperview()
 //        dialog.view.superview?.setNeedsLayout()
 //        dialog.view.superview?.layoutIfNeeded()
 //    }
@@ -71,13 +71,13 @@ class DialogPresenterCentered : NSObject, DialogPresenter {
     var beforePresent:(()->Void)?
     internal func setInitialModalWrapperConstraints(_ dialog:Dialog) {
         
-        NSLayoutConstraint.autoSet(priority: 999) {
-            dialog.preferredModalWidthConstraint = dialog.modalWrapper.autoSet(dimension: .width, toSize: dialog.preferredModalWidth)
+        NSLayoutConstraint.layoutSet(priority: 999) {
+            dialog.preferredModalWidthConstraint = dialog.modalWrapper.layoutSet(dimension: .width, toSize: dialog.preferredModalWidth)
         }
-        NSLayoutConstraint.autoSet(priority: 998) {
-            dialog.modalWrapper.autoCenter()
+        NSLayoutConstraint.layoutSet(priority: 998) {
+            dialog.modalWrapper.layoutCenterInSuperview()
         }
-        dialog.modalWrapper.autoPinEdge(toSuperviewEdge: .top, withInset: 20, relation: NSLayoutRelation.greaterThanOrEqual)
+        dialog.modalWrapper.layoutPinEdge(toSuperviewEdge: .top, withInset: 20, relation: NSLayoutRelation.greaterThanOrEqual)
         
         
         //        let constraint = NSLayoutConstraint(item: dialog.modalWrapper,
@@ -168,8 +168,8 @@ class DialogPresenterCentered : NSObject, DialogPresenter {
 
 class DialogPresenterRightEdge : NSObject, DialogPresenter {
     internal func setInitialModalWrapperConstraints(_ dialog: Dialog) {
-        dialog.modalWrapper.autoSet(dimension: .width, toSize: dialog.preferredModalWidth)
-        dialog.modalWrapper.autoPinEdgesToSuperviewEdges(withInsets: .zero, excludingEdge: .left)
+        dialog.modalWrapper.layoutSet(dimension: .width, toSize: dialog.preferredModalWidth)
+        dialog.modalWrapper.layoutPinEdgesToSuperviewEdges(withInsets: .zero, excludingEdge: .left)
     }
     
     internal func presentDialog(_ dialog: Dialog, animated: Bool) {
@@ -197,8 +197,8 @@ class DialogPresenterRightEdge : NSObject, DialogPresenter {
 
 class DialogPresenterLeftEdge : NSObject, DialogPresenter {
     func setInitialModalWrapperConstraints(_ dialog: Dialog) {
-        dialog.modalWrapper.autoSet(dimension: .width, toSize: dialog.preferredModalWidth)
-        dialog.modalWrapper.autoPinEdgesToSuperviewEdges(withInsets: .zero, excludingEdge: .right)
+        dialog.modalWrapper.layoutSet(dimension: .width, toSize: dialog.preferredModalWidth)
+        dialog.modalWrapper.layoutPinEdgesToSuperviewEdges(withInsets: .zero, excludingEdge: .right)
     }
     func presentDialog(_ dialog: Dialog, animated: Bool) {
         
@@ -243,9 +243,9 @@ public class Dialog: UIViewController {
     //    var statusBarWasHidden = false
     
     var dismissOnBackgroundTap = false
-    var autoDismiss = true
+    var layoutDismiss = true
     fileprivate var dismissed = false
-    var autoUppercase = true
+    var layoutUppercase = true
     var topEdgeContentInset:CGFloat = 0
     
     var buttonRows:[[UIView]] = [[UIView]]()
@@ -262,12 +262,12 @@ public class Dialog: UIViewController {
     }
     
     func buttonString(_ str:String) -> String {
-        return autoUppercase ? str.uppercased() : str
+        return layoutUppercase ? str.uppercased() : str
     }
     
     func buttonCallback(_ callback:(()->Void)?) -> ()->Void {
         return { [weak self] in
-            if let self_ = self , self_.autoDismiss {
+            if let self_ = self , self_.layoutDismiss {
                 self_.dismiss()
             }
             if let cb = callback {
@@ -281,7 +281,7 @@ public class Dialog: UIViewController {
     func addKeyButton(_ title:String,callback:(()->Void)?) {
         let btn = MainButtonGray()
         btn.setTitle(title, for: UIControlState())
-        btn.autoSet(dimension:.height, toSize: buttonHeight)
+        btn.layoutSet(dimension:.height, toSize: buttonHeight)
         btn.block_setAction(buttonCallback(callback))
         btn.setBackgroundImage(nil, for: UIControlState())
         addButton(btn)
@@ -290,7 +290,7 @@ public class Dialog: UIViewController {
     func addButton(_ title:String,callback:(()->Void)?) {
         let btn = MainButtonGray()
         btn.setTitle(title, for: UIControlState())
-        btn.autoSet(dimension:.height, toSize: buttonHeight)
+        btn.layoutSet(dimension:.height, toSize: buttonHeight)
         btn.block_setAction(buttonCallback(callback))
         addButton(btn)
     }
@@ -299,7 +299,7 @@ public class Dialog: UIViewController {
         let buttons:[UIView] = row.map {
             let (view, btn) = $0.button
             btn.block_setAction(buttonCallback($0.callback))
-            //            btn.autoSetDimension(.Height, toSize: buttonHeight)
+            //            btn.layoutSetDimension(.Height, toSize: buttonHeight)
             return view
         }
         buttonRows.append(buttons)
@@ -319,7 +319,7 @@ public class Dialog: UIViewController {
         grayView = UIView()
         grayView.isUserInteractionEnabled = false
         self.view.addSubview(grayView)
-        grayView.autoPinEdgesToSuperviewEdges()
+        grayView.layoutPinEdgesToSuperviewEdges()
         view.backgroundColor = UIColor.clear
         
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -331,20 +331,20 @@ public class Dialog: UIViewController {
         view.addSubview(modalWrapper)
         
         
-        //        modalWrapper.autoSetDimension(.Height, toSize: 350)
+        //        modalWrapper.layoutSetDimension(.Height, toSize: 350)
         presenter.setInitialModalWrapperConstraints(self)
         
         modalWrapper.addSubview(modalView)
-        modalView.autoPinEdgesToSuperviewEdges()
+        modalView.layoutPinEdgesToSuperviewEdges()
         
-        //        whiteCover = UIView.newAutoLayoutView()
+        //        whiteCover = UIView.newlayoutLayoutView()
         //        whiteCover.backgroundColor = UIColor(white: 1, alpha: 0.9)
         //        modalWrapper.addSubview(whiteCover)
-        //        whiteCover.autoPinEdgesToSuperviewEdgesWithInsets(UIEdgeInsetsZero)
+        //        whiteCover.layoutPinEdgesToSuperviewEdgesWithInsets(UIEdgeInsetsZero)
         
         //        let activity = LoadingView()
         //        whiteCover.addSubview(activity)
-        //        activity.autoCenterInSuperview()
+        //        activity.layoutCenterInSuperview()
         //        whiteCover.alpha = 0
         
         
@@ -353,7 +353,7 @@ public class Dialog: UIViewController {
             contentView.isUserInteractionEnabled = true
         }
         modalView.addSubview(contentView)
-        contentView.autoPinEdgesToSuperviewEdges(withInsets: UIEdgeInsetsMake(topEdgeContentInset, 0, 0, 0), excludingEdge: .bottom)
+        contentView.layoutPinEdgesToSuperviewEdges(withInsets: UIEdgeInsetsMake(topEdgeContentInset, 0, 0, 0), excludingEdge: .bottom)
         if buttonRows.count > 0 {
             let rows:[UIStackView] = buttonRows.map {
                 let stack = UIStackView(arrangedSubviews: $0)
@@ -368,11 +368,11 @@ public class Dialog: UIViewController {
             stackView.spacing = 15
             stackView.alignment = .center
             modalView.addSubview(stackView)
-            stackView.autoPin(edge:.top, toEdge: .bottom, ofView: contentView)
-            stackView.autoPinEdgesToSuperviewEdges(withInsets: UIEdgeInsetsMake(20, 20, 30, 20), excludingEdge: .top)
+            stackView.layoutPin(edge:.top, toEdge: .bottom, ofView: contentView)
+            stackView.layoutPinEdgesToSuperviewEdges(withInsets: UIEdgeInsetsMake(20, 20, 30, 20), excludingEdge: .top)
         }
         else {
-            contentView.autoPinEdge(toSuperviewEdge: .bottom)
+            contentView.layoutPinEdge(toSuperviewEdge: .bottom)
         }
         
         if roundedCornersWithShadow {
@@ -391,7 +391,7 @@ public class Dialog: UIViewController {
             let tapRec = UITapGestureRecognizer(target: self, action: #selector(Dialog.onBackgroundTap))
             let subView = UIView()
             view.insertSubview(subView, at: 0)
-            subView.autoPinEdgesToSuperviewEdges(withInsets: UIEdgeInsets.zero)
+            subView.layoutPinEdgesToSuperviewEdges(withInsets: UIEdgeInsets.zero)
             subView.addGestureRecognizer(tapRec)
         }
     }
@@ -439,8 +439,8 @@ public class Dialog: UIViewController {
             window.rootViewController = self
         }
         
-        //        NSLayoutConstraint.autoSetPriority(999) {
-        self.bottomConstraint = self.view.autoPinEdgesToSuperviewEdges(withInsets: UIEdgeInsets.zero)[2]
+        //        NSLayoutConstraint.layoutSetPriority(999) {
+        self.bottomConstraint = self.view.layoutPinEdgesToSuperviewEdges(withInsets: UIEdgeInsets.zero)[2]
         //        }
         
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardShown), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
@@ -575,22 +575,22 @@ class DialogMessage: Dialog {
         messageLabel.numberOfLines = 0
         messageLabel.attributedText = attributedMessage
         contentView.addSubview(messageLabel)
-        messageLabel.autoPinEdgesToSuperviewEdges(withInsets: UIEdgeInsetsMake(0, lrPadding, tbPadding-5, lrPadding), excludingEdge: .top)
+        messageLabel.layoutPinEdgesToSuperviewEdges(withInsets: UIEdgeInsetsMake(0, lrPadding, tbPadding-5, lrPadding), excludingEdge: .top)
         
         if let titleView = titleView {
             contentView.addSubview(titleView)
             if let _ = titleView as? UIImageView {
-                titleView.autoPinEdge(toSuperviewEdge: .top, withInset:tbPadding)
-                titleView.autoSetDimensions(toSize: CGSize(width: 50, height: 50))
-                titleView.autoAlignAxis(toSuperviewAxis: .vertical)
+                titleView.layoutPinEdge(toSuperviewEdge: .top, withInset:tbPadding)
+                titleView.layoutSetDimensions(toSize: CGSize(width: 50, height: 50))
+                titleView.layoutAlignAxis(toSuperviewAxis: .vertical)
             }
             else {
-                titleView.autoPinEdgesToSuperviewEdges(withInsets: UIEdgeInsetsMake(tbPadding, lrPadding, 0, lrPadding), excludingEdge: .bottom)
+                titleView.layoutPinEdgesToSuperviewEdges(withInsets: UIEdgeInsetsMake(tbPadding, lrPadding, 0, lrPadding), excludingEdge: .bottom)
             }
-            messageLabel.autoPin(edge: .top, toEdge: .bottom, ofView: titleView, withOffset: 10)
+            messageLabel.layoutPin(edge: .top, toEdge: .bottom, ofView: titleView, withOffset: 10)
         }
         else {
-            messageLabel.autoPinEdge(toSuperviewEdge: .top, withInset: tbPadding)
+            messageLabel.layoutPinEdge(toSuperviewEdge: .top, withInset: tbPadding)
         }
         
         modalView.backgroundColor = UIColor.white
@@ -655,7 +655,7 @@ class DialogWithViewController: Dialog {
             isAdding = true
         }
         if preferredContentHeight > 0 {
-            subViewController.view.autoSet(dimension:.height, toSize: CGFloat(preferredContentHeight))
+            subViewController.view.layoutSet(dimension:.height, toSize: CGFloat(preferredContentHeight))
         }
         if isAdding {
             subViewController.didMove(toParentViewController: self)
@@ -669,7 +669,7 @@ class DialogWithView: Dialog {
     var preferredContentHeight:Float = 0
     override func buildContentView() -> UIView {
         if preferredContentHeight > 0 {
-            subView.autoSet(dimension:.height, toSize: CGFloat(preferredContentHeight))
+            subView.layoutSet(dimension:.height, toSize: CGFloat(preferredContentHeight))
         }
         return subView
     }
@@ -684,7 +684,7 @@ class DialogWeb: Dialog, UIWebViewDelegate {
     var webViewScroll = false
     override func buildContentView() -> UIView {
         webView.delegate = self
-        webView.autoSet(dimension:.height, toSize: webViewHeight)
+        webView.layoutSet(dimension:.height, toSize: webViewHeight)
         if let h = html {
             webView.loadHTMLString(h, baseURL: nil)
         }
@@ -716,11 +716,11 @@ class DialogNavigation: Dialog {
         if let controller = contentController {
             //            self.view.addSubview(controller.view)
             //            self.addChildViewController(controller)
-            //            controller.view.autoPinEdgesToSuperviewEdgesWithInsets(UIEdgeInsetsZero)
+            //            controller.view.layoutPinEdgesToSuperviewEdgesWithInsets(UIEdgeInsetsZero)
             navController = UINavigationController(rootViewController: controller)
             if preferredContentHeight > 0 {
-                NSLayoutConstraint.autoSet(priority:999) {
-                    self.navController!.view.autoSet(dimension:.height, toSize: CGFloat(self.preferredContentHeight))
+                NSLayoutConstraint.layoutSet(priority:999) {
+                    self.navController!.view.layoutSet(dimension:.height, toSize: CGFloat(self.preferredContentHeight))
                 }
             }
             navController!.view.layer.masksToBounds = true

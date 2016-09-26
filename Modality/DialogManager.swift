@@ -697,7 +697,7 @@ class DialogWeb: Dialog, UIWebViewDelegate {
     }
     func webView(_ webView: UIWebView, shouldStartLoadWith request: URLRequest, navigationType: UIWebViewNavigationType) -> Bool {
         if navigationType == .linkClicked && openLinksInSafari {
-            UIApplication.shared.open(request.url!, options: [:], completionHandler: nil)
+            UIApplication.shared.openURL(request.url!)
             return false
         }
         return true

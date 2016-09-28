@@ -111,78 +111,6 @@ enum LayoutMarginAxis {
     }
 }
 
-//enum LayoutAttribute {
-//    case left
-//    case right
-//    case top
-//    case bottom
-//    case leading
-//    case trailing
-//    case width
-//    case height
-//    case vertical
-//    case horizontal
-//    case baseline
-//    case lastbaseline
-//    case firstBaseline
-//    case marginLeft
-//    case marginRight
-//    case marginTop
-//    case marginBottom
-//    case marginLeading
-//    case marginTrailing
-//    case marginAxisVertical
-//    case marginAxisHorizontal
-//
-//    var attribute:NSLayoutAttribute {
-//        switch self {
-//        case .left:
-//            return LayoutEdge.left.attribute
-//        case .right:
-//            return LayoutEdge.right.attribute
-//        case .top:
-//            return LayoutEdge.top.attribute
-//        case .bottom:
-//            return LayoutEdge.bottom.attribute
-//        case .leading:
-//            return LayoutEdge.leading.attribute
-//        case .trailing:
-//            return LayoutEdge.trailing.attribute
-//        case .width:
-//            return LayoutDimension.width.attribute
-//        case .height:
-//            return LayoutDimension.height.attribute
-//        case .vertical:
-//            return LayoutAxis.centerX.attribute
-//        case .horizontal:
-//            return LayoutAxis.centerY.attribute
-//        case .baseline:
-//            return LayoutAxis.baseline.attribute
-//        case .lastbaseline:
-//            return LayoutAxis.lastBaseline.attribute
-//        case .firstBaseline:
-//            return LayoutAxis.firstBaseline.attribute
-//        case .marginLeft:
-//            return LayoutMargin.left.attribute
-//        case .marginRight:
-//            return LayoutMargin.right.attribute
-//        case .marginTop:
-//            return LayoutMargin.top.attribute
-//        case .marginBottom:
-//            return LayoutMargin.bottom.attribute
-//        case .marginLeading:
-//            return LayoutMargin.leading.attribute
-//        case .marginTrailing:
-//            return LayoutMargin.trailing.attribute
-//        case .marginAxisVertical:
-//            return LayoutMarginAxis.vertical.attribute
-//        case .marginAxisHorizontal:
-//            return LayoutMarginAxis.horizontal.attribute
-//        }
-//    }
-//}
-//
-
 extension UIView {
     
     /**
@@ -192,11 +120,11 @@ extension UIView {
      @return An array of constraints added.
      */
     @discardableResult
-    func layoutSetDimensions(toSize:CGSize,
+    func alSetDimensions(toSize:CGSize,
                              relation:NSLayoutRelation? = nil) -> [NSLayoutConstraint] {
         return [
-            layoutSet(dimension: .width, toSize: toSize.width),
-            layoutSet(dimension: .height, toSize: toSize.height),
+            alSetDimension(.width, toSize: toSize.width),
+            alSetDimension(.height, toSize: toSize.height),
         ]
     }
     
@@ -208,7 +136,7 @@ extension UIView {
      @return The constraint added.
      */
     @discardableResult
-    func layoutSet(dimension:LayoutDimension,
+    func alSetDimension(_ dimension:LayoutDimension,
                    toSize size:CGFloat,
                    relation:NSLayoutRelation? = nil) -> NSLayoutConstraint {
         
@@ -234,10 +162,10 @@ extension UIView {
      @return The constraint added.
      */
     @discardableResult
-    func layoutConstrain(attribute:NSLayoutAttribute,
+    func alConstrain(attribute:NSLayoutAttribute,
                        toAttribute otherAttribute:NSLayoutAttribute,
                        ofView view:UIView) -> NSLayoutConstraint {
-        return layoutConstrain(attribute: attribute, toAttribute: otherAttribute, ofView: view, withOffset: 0)
+        return alConstrain(attribute: attribute, toAttribute: otherAttribute, ofView: view, withOffset: 0)
     }
     
     /**
@@ -252,7 +180,7 @@ extension UIView {
      @return The constraint added.
      */
     @discardableResult
-    func layoutConstrain(attribute:NSLayoutAttribute,
+    func alConstrain(attribute:NSLayoutAttribute,
                        toAttribute otherAttribute:NSLayoutAttribute,
                        ofView view:UIView,
                        withOffset offset:CGFloat = 0,
@@ -282,7 +210,7 @@ extension UIView {
      @return The constraint added.
      */
     @discardableResult
-    func layoutConstrain(attribute:NSLayoutAttribute,
+    func alConstrain(attribute:NSLayoutAttribute,
                          toAttribute otherAttribute:NSLayoutAttribute,
                          ofView view:UIView,
                          withMultiplier multiplier:CGFloat = 0,
@@ -309,10 +237,10 @@ extension UIView {
      @return The constraint added.
      */
     @discardableResult
-    func layoutAlignAxis(toSuperviewAxis axis:LayoutAxis) -> NSLayoutConstraint {
+    func alAlignAxis(toSuperviewAxis axis:LayoutAxis) -> NSLayoutConstraint {
         translatesAutoresizingMaskIntoConstraints = false
         guard let superview = superview else { fatalError("View's superview must not be nil.\nView: \(self)") }
-        return layoutConstrain(attribute: axis.attribute, toAttribute: axis.attribute, ofView: superview)
+        return alConstrain(attribute: axis.attribute, toAttribute: axis.attribute, ofView: superview)
     }
     
     /**
@@ -321,11 +249,11 @@ extension UIView {
      @return An array of constraints added.
      */
     @discardableResult
-    func layoutCenterInSuperview() -> [NSLayoutConstraint] {
+    func alCenterInSuperview() -> [NSLayoutConstraint] {
         translatesAutoresizingMaskIntoConstraints = false
         return [
-            layoutAlignAxis(toSuperviewAxis: .vertical),
-            layoutAlignAxis(toSuperviewAxis: .horizontal)
+            alAlignAxis(toSuperviewAxis: .vertical),
+            alAlignAxis(toSuperviewAxis: .horizontal)
         ]
     }
     
@@ -338,7 +266,7 @@ extension UIView {
      @return The constraint added.
      */
     @discardableResult
-    func layoutPinEdge(toSuperviewEdge edge:LayoutEdge,
+    func alPinEdge(toSuperviewEdge edge:LayoutEdge,
                        withInset inset:CGFloat = 0,
                        relation:NSLayoutRelation = .equal) -> NSLayoutConstraint {
         
@@ -356,7 +284,7 @@ extension UIView {
                 relation = .lessThanOrEqual
             }
         }
-        return layoutPin(edge: edge, toEdge: edge, ofView: superview, withOffset: inset, relation: relation)
+        return alPin(edge: edge, toEdge: edge, ofView: superview, withOffset: inset, relation: relation)
     }
     
     /**
@@ -370,14 +298,14 @@ extension UIView {
      @return The constraint added.
      */
     @discardableResult
-    func layoutPin(edge:LayoutEdge,
+    func alPin(edge:LayoutEdge,
                    toEdge:LayoutEdge,
                    ofView otherView:UIView,
                    withOffset offset:CGFloat = 0,
                    relation:NSLayoutRelation = .equal) -> NSLayoutConstraint {
         
         translatesAutoresizingMaskIntoConstraints = false
-        return layoutConstrain(attribute: edge.attribute,
+        return alConstrain(attribute: edge.attribute,
                                toAttribute: toEdge.attribute,
                                ofView: otherView,
                                withOffset: offset,
@@ -393,21 +321,21 @@ extension UIView {
      @param edge The edge of this view to exclude in pinning to its superview; this method will not apply any constraint to it.
      @return An array of constraints added.
      */
-    @discardableResult func layoutPinEdgesToSuperviewEdges(withInsets insets:UIEdgeInsets = .zero,
+    @discardableResult func alPinEdgesToSuperviewEdges(withInsets insets:UIEdgeInsets = .zero,
                                                          excludingEdge edge:LayoutEdge? = nil) -> [NSLayoutConstraint] {
         
         var constraints = [NSLayoutConstraint]()
         if edge != .top {
-            constraints.append(layoutPinEdge(toSuperviewEdge: .top, withInset: insets.top))
+            constraints.append(alPinEdge(toSuperviewEdge: .top, withInset: insets.top))
         }
         if edge != .leading && edge != .left {
-            constraints.append(layoutPinEdge(toSuperviewEdge: .leading, withInset: insets.left))
+            constraints.append(alPinEdge(toSuperviewEdge: .leading, withInset: insets.left))
         }
         if edge != .bottom {
-            constraints.append(layoutPinEdge(toSuperviewEdge: .bottom, withInset: insets.bottom))
+            constraints.append(alPinEdge(toSuperviewEdge: .bottom, withInset: insets.bottom))
         }
         if edge != .trailing && edge != .right {
-            constraints.append(layoutPinEdge(toSuperviewEdge: .trailing, withInset: insets.right))
+            constraints.append(alPinEdge(toSuperviewEdge: .trailing, withInset: insets.right))
         }
         return constraints
     }
@@ -434,7 +362,7 @@ class ConstraintsManager {
 
 extension NSLayoutConstraint {
     
-    static func layoutSet(priority:UILayoutPriority, forConstraints actions:(()->())) {
+    static func alSetPriority(_ priority:UILayoutPriority, forConstraints actions:(()->())) {
         ConstraintsManager.shared.priorityStack.append(priority)
         actions()
         ConstraintsManager.shared.priorityStack.removeLast()

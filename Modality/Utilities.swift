@@ -9,7 +9,13 @@
 import Foundation
 
 
+var modalMessageLineSpacing = CGFloat(5.0)
 
+func defaultModalParagraphStyle() -> NSMutableParagraphStyle {
+    let paraStyle = NSMutableParagraphStyle()
+    paraStyle.lineSpacing = modalMessageLineSpacing
+    return paraStyle
+}
 
 
 extension UIColor {

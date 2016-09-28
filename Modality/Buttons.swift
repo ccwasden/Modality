@@ -8,6 +8,39 @@
 
 import Foundation
 
+
+public protocol ModalButtonType {
+    var modalButton:ModalButton { get }
+    var modalOnPressed:(()->())? { get }
+}
+
+public protocol ModalButton {
+    var modalButtonView:UIView { get }
+    var modalButton:UIButton { get }
+}
+
+extension UIButton:ModalButton {
+    public var modalButtonView: UIView {
+        return self
+    }
+    public var modalButton: UIButton {
+        return self
+    }
+}
+
+extension String:ModalButtonType {
+    public var modalButton:ModalButton {
+        return Modality.shared.defaultButtonBuilder(self)
+    }
+    public var modalOnPressed:(()->())? { return nil }
+}
+
+
+
+
+
+
+
 class MainButtonGray: UIButton {
     
     override init(frame: CGRect) {
@@ -26,7 +59,7 @@ class MainButtonGray: UIButton {
         layer.borderWidth = 0.5
         setTitleColor(DefaultsStyleKit.textColor, for: UIControlState())
         setTitleColor(DefaultsStyleKit.mediumTextColor, for: .highlighted)
-        titleLabel?.font = FontsManager.shared.primaryFont(.Regular, size: 14)
+        titleLabel?.font = Modality.defaultSettings.fontSettings.titleFont
     }
     
     override var intrinsicContentSize : CGSize {
@@ -37,35 +70,46 @@ class MainButtonGray: UIButton {
     
 }
 
-public protocol ButtonType {
-    var callback:(()->Void)? { get }
-    var button:(UIView, UIButton) { get }
-}
+//public protocol ButtonType {
+//    var callback:(()->Void)? { get }
+//    var button:(UIView, UIButton) { get }
+//}
 
-struct RoundedButtonType: ButtonType {
-    let color:UIColor
+struct DefaultButtonType: ModalButtonType {
     let text:String
-    let callback: (() -> Void)?
-    //    let height:Int
-    var button:(UIView, UIButton) {
-        let button = RoundedButton()
-        button.setTitle(text, for: UIControlState())
-        button.setColor(color, forState: UIControlState())
-        button.setColor(color.mixDarker(), forState: .highlighted)
-        return (button, button)
+    let modalOnPressed: (()->())?
+    
+    var modalButton: ModalButton {
+        let button = MainButtonGray()
+        button.setTitle(text, for: .normal)
+        return button
     }
 }
 
-struct CircleImageButtonType: ButtonType {
-    let image:UIImage
-    let callback: (() -> Void)?
-    
-    var button: (UIView, UIButton) {
-        let button = CircleImageButton()
-        button.setImage(image, for: UIControlState())
-        return (button, button)
-    }
-}
+//struct RoundedButtonType: ButtonType {
+//    let color:UIColor
+//    let text:String
+//    let callback: (() -> Void)?
+//    //    let height:Int
+//    var button:(UIView, UIButton) {
+//        let button = RoundedButton()
+//        button.setTitle(text, for: UIControlState())
+//        button.setColor(color, forState: UIControlState())
+//        button.setColor(color.mixDarker(), forState: .highlighted)
+//        return (button, button)
+//    }
+//}
+//
+//struct CircleImageButtonType: ButtonType {
+//    let image:UIImage
+//    let callback: (() -> Void)?
+//    
+//    var button: (UIView, UIButton) {
+//        let button = CircleImageButton()
+//        button.setImage(image, for: UIControlState())
+//        return (button, button)
+//    }
+//}
 
 class CircleImageButton: UIButton {
     
@@ -120,8 +164,8 @@ class RoundedButton: UIButton {
     func setup() {
         backgroundColor = DefaultsStyleKit.background
         layer.cornerRadius = height/2
-        
-        titleLabel?.font = FontsManager.shared.primaryFont(.Regular, size: fontSize)
+       
+        titleLabel?.font = Modality.defaultSettings.fontSettings.titleFont
         
         //        layer.borderColor = DefaultsStyleKit.lightGray.CGColor
         //        layer.borderWidth = 0.5

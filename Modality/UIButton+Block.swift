@@ -17,7 +17,7 @@ typealias BlockButtonActionBlock = () -> Void
 class ActionBlockWrapper : NSObject {
     var block : BlockButtonActionBlock
     init(block: @escaping BlockButtonActionBlock) {
-    self.block = block
+        self.block = block
     }
 }
 

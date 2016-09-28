@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A00227161D9B180B00ABA2DE /* ModalSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00227151D9B180B00ABA2DE /* ModalSettings.swift */; };
+		A00227181D9B25DF00ABA2DE /* ModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00227171D9B25DF00ABA2DE /* ModalViewController.swift */; };
+		A002271A1D9B469400ABA2DE /* Modal.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00227191D9B469400ABA2DE /* Modal.swift */; };
+		A002271C1D9C2B3900ABA2DE /* TestModalView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A002271B1D9C2B3900ABA2DE /* TestModalView.xib */; };
 		A02608F01D99DC1C00C4C6FF /* Modality.h in Headers */ = {isa = PBXBuildFile; fileRef = A02608EE1D99DC1C00C4C6FF /* Modality.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A02608FD1D99DC3800C4C6FF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A02608FC1D99DC3800C4C6FF /* AppDelegate.swift */; };
 		A02608FF1D99DC3800C4C6FF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A02608FE1D99DC3800C4C6FF /* ViewController.swift */; };
@@ -20,9 +24,9 @@
 		A02609261D99DC5A00C4C6FF /* UIButton+Block.swift in Sources */ = {isa = PBXBuildFile; fileRef = A02609201D99DC5A00C4C6FF /* UIButton+Block.swift */; };
 		A02609271D99DC5A00C4C6FF /* DefaultsStyleKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = A02609211D99DC5A00C4C6FF /* DefaultsStyleKit.swift */; };
 		A02609281D99DC5A00C4C6FF /* Buttons.swift in Sources */ = {isa = PBXBuildFile; fileRef = A02609221D99DC5A00C4C6FF /* Buttons.swift */; };
-		A02609291D99DC5A00C4C6FF /* FontsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A02609231D99DC5A00C4C6FF /* FontsManager.swift */; };
 		A026092A1D99DC5A00C4C6FF /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = A02609241D99DC5A00C4C6FF /* Utilities.swift */; };
 		A026092E1D99E9E400C4C6FF /* AutoLayoutUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = A026092D1D99E9E400C4C6FF /* AutoLayoutUtilities.swift */; };
+		A02609301D99ED7D00C4C6FF /* ModalPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A026092F1D99ED7D00C4C6FF /* ModalPresenter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +61,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		A00227151D9B180B00ABA2DE /* ModalSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModalSettings.swift; sourceTree = "<group>"; };
+		A00227171D9B25DF00ABA2DE /* ModalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModalViewController.swift; sourceTree = "<group>"; };
+		A00227191D9B469400ABA2DE /* Modal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Modal.swift; sourceTree = "<group>"; };
+		A002271B1D9C2B3900ABA2DE /* TestModalView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TestModalView.xib; sourceTree = "<group>"; };
 		A02608EB1D99DC1C00C4C6FF /* Modality.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Modality.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A02608EE1D99DC1C00C4C6FF /* Modality.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Modality.h; sourceTree = "<group>"; };
 		A02608EF1D99DC1C00C4C6FF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -74,9 +82,9 @@
 		A02609201D99DC5A00C4C6FF /* UIButton+Block.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIButton+Block.swift"; sourceTree = "<group>"; };
 		A02609211D99DC5A00C4C6FF /* DefaultsStyleKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultsStyleKit.swift; sourceTree = "<group>"; };
 		A02609221D99DC5A00C4C6FF /* Buttons.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Buttons.swift; sourceTree = "<group>"; };
-		A02609231D99DC5A00C4C6FF /* FontsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FontsManager.swift; sourceTree = "<group>"; };
 		A02609241D99DC5A00C4C6FF /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		A026092D1D99E9E400C4C6FF /* AutoLayoutUtilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoLayoutUtilities.swift; sourceTree = "<group>"; };
+		A026092F1D99ED7D00C4C6FF /* ModalPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModalPresenter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +113,30 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A002271D1D9C31AD00ABA2DE /* Modality */ = {
+			isa = PBXGroup;
+			children = (
+				A026091F1D99DC5A00C4C6FF /* Modality.swift */,
+				A026092F1D99ED7D00C4C6FF /* ModalPresenter.swift */,
+				A00227151D9B180B00ABA2DE /* ModalSettings.swift */,
+				A00227171D9B25DF00ABA2DE /* ModalViewController.swift */,
+				A00227191D9B469400ABA2DE /* Modal.swift */,
+			);
+			name = Modality;
+			sourceTree = "<group>";
+		};
+		A002271E1D9C31BA00ABA2DE /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				A02609201D99DC5A00C4C6FF /* UIButton+Block.swift */,
+				A02609211D99DC5A00C4C6FF /* DefaultsStyleKit.swift */,
+				A02609221D99DC5A00C4C6FF /* Buttons.swift */,
+				A02609241D99DC5A00C4C6FF /* Utilities.swift */,
+				A026092D1D99E9E400C4C6FF /* AutoLayoutUtilities.swift */,
+			);
+			name = Utilities;
+			sourceTree = "<group>";
+		};
 		A02608E11D99DC1C00C4C6FF = {
 			isa = PBXGroup;
 			children = (
@@ -128,15 +160,10 @@
 		A02608ED1D99DC1C00C4C6FF /* Modality */ = {
 			isa = PBXGroup;
 			children = (
+				A002271E1D9C31BA00ABA2DE /* Utilities */,
+				A002271D1D9C31AD00ABA2DE /* Modality */,
 				A02608EE1D99DC1C00C4C6FF /* Modality.h */,
 				A02608EF1D99DC1C00C4C6FF /* Info.plist */,
-				A026091F1D99DC5A00C4C6FF /* Modality.swift */,
-				A02609201D99DC5A00C4C6FF /* UIButton+Block.swift */,
-				A02609211D99DC5A00C4C6FF /* DefaultsStyleKit.swift */,
-				A02609221D99DC5A00C4C6FF /* Buttons.swift */,
-				A02609231D99DC5A00C4C6FF /* FontsManager.swift */,
-				A02609241D99DC5A00C4C6FF /* Utilities.swift */,
-				A026092D1D99E9E400C4C6FF /* AutoLayoutUtilities.swift */,
 			);
 			path = Modality;
 			sourceTree = "<group>";
@@ -150,6 +177,7 @@
 				A02609031D99DC3800C4C6FF /* Assets.xcassets */,
 				A02609051D99DC3800C4C6FF /* LaunchScreen.storyboard */,
 				A02609081D99DC3800C4C6FF /* Info.plist */,
+				A002271B1D9C2B3900ABA2DE /* TestModalView.xib */,
 			);
 			path = ModalityTestApp;
 			sourceTree = "<group>";
@@ -295,6 +323,7 @@
 			files = (
 				A02609071D99DC3800C4C6FF /* LaunchScreen.storyboard in Resources */,
 				A02609041D99DC3800C4C6FF /* Assets.xcassets in Resources */,
+				A002271C1D9C2B3900ABA2DE /* TestModalView.xib in Resources */,
 				A02609021D99DC3800C4C6FF /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -313,11 +342,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A002271A1D9B469400ABA2DE /* Modal.swift in Sources */,
 				A026092A1D99DC5A00C4C6FF /* Utilities.swift in Sources */,
 				A026092E1D99E9E400C4C6FF /* AutoLayoutUtilities.swift in Sources */,
 				A02609271D99DC5A00C4C6FF /* DefaultsStyleKit.swift in Sources */,
 				A02609251D99DC5A00C4C6FF /* Modality.swift in Sources */,
-				A02609291D99DC5A00C4C6FF /* FontsManager.swift in Sources */,
+				A02609301D99ED7D00C4C6FF /* ModalPresenter.swift in Sources */,
+				A00227181D9B25DF00ABA2DE /* ModalViewController.swift in Sources */,
+				A00227161D9B180B00ABA2DE /* ModalSettings.swift in Sources */,
 				A02609261D99DC5A00C4C6FF /* UIButton+Block.swift in Sources */,
 				A02609281D99DC5A00C4C6FF /* Buttons.swift in Sources */,
 			);
@@ -592,6 +624,7 @@
 				A02608F51D99DC1C00C4C6FF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		A02609141D99DC3800C4C6FF /* Build configuration list for PBXNativeTarget "ModalityTestApp" */ = {
 			isa = XCConfigurationList;
@@ -600,6 +633,7 @@
 				A02609161D99DC3800C4C6FF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		A02609171D99DC3800C4C6FF /* Build configuration list for PBXNativeTarget "ModalityTestAppUITests" */ = {
 			isa = XCConfigurationList;
@@ -608,6 +642,7 @@
 				A02609191D99DC3800C4C6FF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

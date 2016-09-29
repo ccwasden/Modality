@@ -3,13 +3,13 @@
 //  Modality
 //
 //  Created by Chase Wasden on 9/27/16.
-//  Copyright © 2016 Wasdesign. All rights reserved.
+//  
 //
 
 import Foundation
 
 struct ModalShadowSettings {
-    let opacity:CGFloat
+    let opacity:Float
     let radius:CGFloat
     let offset:CGSize
     let color:UIColor
@@ -49,8 +49,7 @@ public struct ModalSettings {
     var containerColor:UIColor = UIColor(white: 0.8, alpha: 0.7)
     var modalColor:UIColor? = .white
     var cornerRadius:CGFloat = 8
-    var shadowSettings:ModalShadowSettings? = nil
-    //    var defaultButtonStyle:ButtonType = DefaultButtonType(text:"asdf", )
+    var shadowSettings:ModalShadowSettings? = ModalShadowSettings(opacity: 0.2, radius: 4, offset: CGSize(width:0,height:2), color: .black)
     var fontSettings = ModalFontSettings(titleFont: defaultTitleFont,
                                          titleColor: .black,
                                          descriptionFont: defaultDescriptionFont,
@@ -67,7 +66,6 @@ public struct ModalSettings {
             modalColor: (newSettings[.modalColor] as? UIColor) ?? modalColor,
             cornerRadius: (newSettings[.cornerRadius] as? CGFloat) ?? cornerRadius,
             shadowSettings: (newSettings[.shadowSettings] as? ModalShadowSettings) ?? shadowSettings,
-            //:        defaultButtonStyle (newSettings[.defaultButtonStyle] as? ) ?? defaultButtonStyle,
             fontSettings: (newSettings[.fontSettings] as? ModalFontSettings) ?? fontSettings,
             preferredModalSize: (newSettings[.preferredModalSize] as? CGSize) ?? preferredModalSize,
             autoFadeContainer: (newSettings[.autoFadeContainer] as? Bool) ?? autoFadeContainer

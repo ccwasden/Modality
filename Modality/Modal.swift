@@ -3,7 +3,7 @@
 //  Modality
 //
 //  Created by Chase Wasden on 9/27/16.
-//  Copyright © 2016 Wasdesign. All rights reserved.
+//  
 //
 
 import Foundation
@@ -56,14 +56,6 @@ public class Modal:ModalViewControllerDelegate, Equatable {
     }
     
     func removeFromWindow(animated:Bool = true, completion:(()->())? = nil) {
-        //        if dismissed { return }
-        //
-        //        dismissed = true
-        //
-        //        if let dismiss = onDismiss {
-        //            dismiss()
-        //        }
-        //
         if animated && settings.autoFadeContainer {
             UIView.animate(withDuration: 0.3, delay: 0, options: UIViewAnimationOptions.curveEaseIn, animations:
                 { () -> Void in
@@ -86,7 +78,6 @@ public class Modal:ModalViewControllerDelegate, Equatable {
     }
     
     internal func showInWindow(_ window:UIWindow, animated:Bool = true){
-        
         window.addSubview(viewController.view)
         viewController.view.alPinEdgesToSuperviewEdges()
         
@@ -104,15 +95,7 @@ public class Modal:ModalViewControllerDelegate, Equatable {
                 { () -> Void in
                     self.viewController.containerView.alpha = 1
             })
-            
         }
-        
-        //        if animated {
-        //        }
-        //        else {
-        //            grayView.alpha = 1
-        //            modalWrapper.alpha = 1
-        //        }
         
         presenter.presentModal(self, animated: animated) {}
     }
@@ -151,10 +134,6 @@ public class Modal:ModalViewControllerDelegate, Equatable {
     
     
 }
-
-
-
-
 
 
 

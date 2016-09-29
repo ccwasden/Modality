@@ -3,7 +3,7 @@
 //  ModalityTestApp
 //
 //  Created by Chase Wasden on 9/26/16.
-//  Copyright © 2016 Wasdesign. All rights reserved.
+//  
 //
 
 import UIKit

@@ -3,7 +3,7 @@
 //  Modality
 //
 //  Created by Chase Wasden on 9/27/16.
-//  Copyright © 2016 Wasdesign. All rights reserved.
+//  
 //
 
 import Foundation
@@ -60,6 +60,24 @@ public class ModalViewController:UIViewController {
     
     func setupModalWrapper() {
         modalWrapper.backgroundColor = settings.modalColor
+        
+        if let shadowSettings = settings.shadowSettings {
+            modalWrapper.layer.shadowColor = shadowSettings.color.cgColor
+            modalWrapper.layer.shadowOffset = shadowSettings.offset
+            modalWrapper.layer.shadowRadius = shadowSettings.radius
+            modalWrapper.layer.shadowOpacity = shadowSettings.opacity
+        }
+        
+        let cornerRadius = settings.cornerRadius
+        if cornerRadius == 0 {
+            modalView.clipsToBounds = false
+        }
+        else {
+            modalView.clipsToBounds = true
+            modalView.layer.cornerRadius = cornerRadius
+            modalWrapper.layer.cornerRadius = cornerRadius
+        }
+        
         view.addSubview(modalWrapper)
     }
     

@@ -117,10 +117,10 @@
 			isa = PBXGroup;
 			children = (
 				A026091F1D99DC5A00C4C6FF /* Modality.swift */,
+				A00227191D9B469400ABA2DE /* Modal.swift */,
 				A026092F1D99ED7D00C4C6FF /* ModalPresenter.swift */,
 				A00227151D9B180B00ABA2DE /* ModalSettings.swift */,
 				A00227171D9B25DF00ABA2DE /* ModalViewController.swift */,
-				A00227191D9B469400ABA2DE /* Modal.swift */,
 			);
 			name = Modality;
 			sourceTree = "<group>";

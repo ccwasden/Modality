@@ -3,19 +3,16 @@
 //  Modality
 //
 //  Created by Chase Wasden on 9/26/16.
-//  Copyright © 2016 Wasdesign. All rights reserved.
+//  
 //
 
 import Foundation
 
 
-//@objc
 public protocol ModalPresenter {
-    //    func setInitialModalWrapperConstraints(_ modal:Modal)
     func presentModal(_ modal:Modal, animated:Bool, completion:@escaping ()->())
     func dismissModal(_ modal:Modal, completion:@escaping ()->() )
 }
-
 
 
 public class ModalPresenterRightEdge: ModalPresenter {
@@ -61,7 +58,6 @@ public class ModalPresenterCentered: ModalPresenter {
     public func constrainModalWrapper(_ modal: Modal, animated: Bool) {
         let vc = modal.viewController
         NSLayoutConstraint.alSetPriority(999) {
-            //            vc.preferredModalWidthConstraint =
             vc.modalWrapper.alSetDimension(.width, toSize: modal.settings.preferredModalSize.width)
         }
         NSLayoutConstraint.alSetPriority(998) {

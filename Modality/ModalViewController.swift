@@ -61,11 +61,11 @@ public class ModalViewController:UIViewController {
     func setupModalWrapper() {
         modalWrapper.backgroundColor = settings.modalColor
         
-        if let shadowSettings = settings.shadowSettings {
-            modalWrapper.layer.shadowColor = shadowSettings.color.cgColor
-            modalWrapper.layer.shadowOffset = shadowSettings.offset
-            modalWrapper.layer.shadowRadius = shadowSettings.radius
-            modalWrapper.layer.shadowOpacity = shadowSettings.opacity
+        if let shadow = settings.shadow {
+            modalWrapper.layer.shadowColor = shadow.color.cgColor
+            modalWrapper.layer.shadowOffset = shadow.offset
+            modalWrapper.layer.shadowRadius = shadow.radius
+            modalWrapper.layer.shadowOpacity = shadow.opacity
         }
         
         let cornerRadius = settings.cornerRadius

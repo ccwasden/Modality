@@ -18,22 +18,109 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9cu-ya-Vxq">
-                                <state key="normal" title="Center"/>
-                                <connections>
-                                    <action selector="centerPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="44J-cO-7Ch"/>
-                                </connections>
-                            </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="xDE-NL-Jjd">
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fot-qP-w95">
+                                        <state key="normal" title="Show Message"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J4N-wa-6tr">
+                                        <state key="normal" title="Show TitleMessage"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2TI-xj-5wL">
+                                        <state key="normal" title="Show Alert"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gqz-sA-rHj">
+                                        <state key="normal" title="Show Success"/>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qHH-24-pcH">
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cAG-fF-i2i">
+                                        <state key="normal" title="Show Custom"/>
+                                    </button>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="JMQ-hG-RXn">
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Presenter" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RWH-bU-qd9">
+                                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="g73-vH-K8E">
+                                                <segments>
+                                                    <segment title="Center"/>
+                                                    <segment title="Left"/>
+                                                    <segment title="Right"/>
+                                                    <segment title="Custom"/>
+                                                </segments>
+                                            </segmentedControl>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Style" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kea-BH-fBk">
+                                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="5kO-2q-flW">
+                                                <segments>
+                                                    <segment title="Style 1"/>
+                                                    <segment title="Style 2"/>
+                                                    <segment title="Style 3"/>
+                                                </segments>
+                                            </segmentedControl>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Buttons" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hkx-as-Vv8">
+                                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Cci-rT-L9f">
+                                                <segments>
+                                                    <segment title="None"/>
+                                                    <segment title="Basic"/>
+                                                    <segment title="Custom"/>
+                                                </segments>
+                                            </segmentedControl>
+                                        </subviews>
+                                    </stackView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Custom Modal" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a0y-Ae-HYW">
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.9016000032" green="0.92381334299999995" blue="0.98000001910000001" alpha="1" colorSpace="deviceRGB"/>
+                                <constraints>
+                                    <constraint firstItem="cAG-fF-i2i" firstAttribute="centerX" secondItem="qHH-24-pcH" secondAttribute="centerX" id="9ne-GM-qvc"/>
+                                    <constraint firstItem="cAG-fF-i2i" firstAttribute="top" secondItem="JMQ-hG-RXn" secondAttribute="bottom" constant="30" id="E5o-fo-2qU"/>
+                                    <constraint firstItem="a0y-Ae-HYW" firstAttribute="top" secondItem="qHH-24-pcH" secondAttribute="top" constant="23" id="Fig-GN-xKy"/>
+                                    <constraint firstItem="JMQ-hG-RXn" firstAttribute="leading" secondItem="qHH-24-pcH" secondAttribute="leading" constant="20" id="Lgb-EA-gkl"/>
+                                    <constraint firstAttribute="trailing" secondItem="JMQ-hG-RXn" secondAttribute="trailing" constant="20" id="VF4-Du-dNI"/>
+                                    <constraint firstItem="JMQ-hG-RXn" firstAttribute="top" secondItem="a0y-Ae-HYW" secondAttribute="bottom" constant="20" id="aXJ-pL-Q86"/>
+                                    <constraint firstAttribute="bottom" secondItem="cAG-fF-i2i" secondAttribute="bottom" constant="20" id="dk1-Xi-Ljt"/>
+                                    <constraint firstItem="a0y-Ae-HYW" firstAttribute="centerX" secondItem="qHH-24-pcH" secondAttribute="centerX" id="rqV-lr-WmJ"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="9cu-ya-Vxq" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="HQz-05-uav"/>
-                            <constraint firstItem="9cu-ya-Vxq" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="KGK-22-ITg"/>
+                            <constraint firstItem="xDE-NL-Jjd" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="40" id="DWi-6n-alE"/>
+                            <constraint firstItem="qHH-24-pcH" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Qui-Ic-Hp6"/>
+                            <constraint firstItem="qHH-24-pcH" firstAttribute="top" secondItem="xDE-NL-Jjd" secondAttribute="bottom" constant="30" id="XEf-rp-9c5"/>
+                            <constraint firstItem="xDE-NL-Jjd" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="bQ6-2j-wwg"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="alertButton" destination="2TI-xj-5wL" id="9jV-PZ-38X"/>
+                        <outlet property="buttonsSegments" destination="Cci-rT-L9f" id="OfU-Ww-C4v"/>
+                        <outlet property="messageButton" destination="Fot-qP-w95" id="tub-h5-9Yl"/>
+                        <outlet property="presenterSegments" destination="g73-vH-K8E" id="80s-nR-syz"/>
+                        <outlet property="showCustomButton" destination="cAG-fF-i2i" id="TDK-IN-9KA"/>
+                        <outlet property="styleSegments" destination="5kO-2q-flW" id="Mli-0Z-t1c"/>
+                        <outlet property="successButton" destination="Gqz-sA-rHj" id="FYZ-zM-q9Q"/>
+                        <outlet property="titleMessageButton" destination="J4N-wa-6tr" id="MDz-dO-YGp"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="32.799999999999997" y="37.331334332833585"/>
         </scene>
     </scenes>
 </document>

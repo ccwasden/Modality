@@ -10,7 +10,6 @@
 		A00227161D9B180B00ABA2DE /* ModalSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00227151D9B180B00ABA2DE /* ModalSettings.swift */; };
 		A00227181D9B25DF00ABA2DE /* ModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00227171D9B25DF00ABA2DE /* ModalViewController.swift */; };
 		A002271A1D9B469400ABA2DE /* Modal.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00227191D9B469400ABA2DE /* Modal.swift */; };
-		A002271C1D9C2B3900ABA2DE /* TestModalView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A002271B1D9C2B3900ABA2DE /* TestModalView.xib */; };
 		A02608F01D99DC1C00C4C6FF /* Modality.h in Headers */ = {isa = PBXBuildFile; fileRef = A02608EE1D99DC1C00C4C6FF /* Modality.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A02608FD1D99DC3800C4C6FF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A02608FC1D99DC3800C4C6FF /* AppDelegate.swift */; };
 		A02608FF1D99DC3800C4C6FF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A02608FE1D99DC3800C4C6FF /* ViewController.swift */; };
@@ -27,6 +26,9 @@
 		A026092A1D99DC5A00C4C6FF /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = A02609241D99DC5A00C4C6FF /* Utilities.swift */; };
 		A026092E1D99E9E400C4C6FF /* AutoLayoutUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = A026092D1D99E9E400C4C6FF /* AutoLayoutUtilities.swift */; };
 		A02609301D99ED7D00C4C6FF /* ModalPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A026092F1D99ED7D00C4C6FF /* ModalPresenter.swift */; };
+		A072B74D1DA2B09B00310C22 /* ModalStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = A072B74C1DA2B09B00310C22 /* ModalStyles.swift */; };
+		A072B7501DA2D17100310C22 /* CustomModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A072B74E1DA2D17100310C22 /* CustomModalViewController.swift */; };
+		A072B7511DA2D17100310C22 /* CustomModalViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A072B74F1DA2D17100310C22 /* CustomModalViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,7 +66,6 @@
 		A00227151D9B180B00ABA2DE /* ModalSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModalSettings.swift; sourceTree = "<group>"; };
 		A00227171D9B25DF00ABA2DE /* ModalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModalViewController.swift; sourceTree = "<group>"; };
 		A00227191D9B469400ABA2DE /* Modal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Modal.swift; sourceTree = "<group>"; };
-		A002271B1D9C2B3900ABA2DE /* TestModalView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TestModalView.xib; sourceTree = "<group>"; };
 		A02608EB1D99DC1C00C4C6FF /* Modality.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Modality.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A02608EE1D99DC1C00C4C6FF /* Modality.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Modality.h; sourceTree = "<group>"; };
 		A02608EF1D99DC1C00C4C6FF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -85,6 +86,9 @@
 		A02609241D99DC5A00C4C6FF /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		A026092D1D99E9E400C4C6FF /* AutoLayoutUtilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoLayoutUtilities.swift; sourceTree = "<group>"; };
 		A026092F1D99ED7D00C4C6FF /* ModalPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModalPresenter.swift; sourceTree = "<group>"; };
+		A072B74C1DA2B09B00310C22 /* ModalStyles.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModalStyles.swift; sourceTree = "<group>"; };
+		A072B74E1DA2D17100310C22 /* CustomModalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomModalViewController.swift; sourceTree = "<group>"; };
+		A072B74F1DA2D17100310C22 /* CustomModalViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomModalViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,6 +122,7 @@
 			children = (
 				A026091F1D99DC5A00C4C6FF /* Modality.swift */,
 				A00227191D9B469400ABA2DE /* Modal.swift */,
+				A072B74C1DA2B09B00310C22 /* ModalStyles.swift */,
 				A026092F1D99ED7D00C4C6FF /* ModalPresenter.swift */,
 				A00227151D9B180B00ABA2DE /* ModalSettings.swift */,
 				A00227171D9B25DF00ABA2DE /* ModalViewController.swift */,
@@ -177,7 +182,8 @@
 				A02609031D99DC3800C4C6FF /* Assets.xcassets */,
 				A02609051D99DC3800C4C6FF /* LaunchScreen.storyboard */,
 				A02609081D99DC3800C4C6FF /* Info.plist */,
-				A002271B1D9C2B3900ABA2DE /* TestModalView.xib */,
+				A072B74E1DA2D17100310C22 /* CustomModalViewController.swift */,
+				A072B74F1DA2D17100310C22 /* CustomModalViewController.xib */,
 			);
 			path = ModalityTestApp;
 			sourceTree = "<group>";
@@ -322,8 +328,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				A02609071D99DC3800C4C6FF /* LaunchScreen.storyboard in Resources */,
+				A072B7511DA2D17100310C22 /* CustomModalViewController.xib in Resources */,
 				A02609041D99DC3800C4C6FF /* Assets.xcassets in Resources */,
-				A002271C1D9C2B3900ABA2DE /* TestModalView.xib in Resources */,
 				A02609021D99DC3800C4C6FF /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -348,6 +354,7 @@
 				A02609271D99DC5A00C4C6FF /* DefaultsStyleKit.swift in Sources */,
 				A02609251D99DC5A00C4C6FF /* Modality.swift in Sources */,
 				A02609301D99ED7D00C4C6FF /* ModalPresenter.swift in Sources */,
+				A072B74D1DA2B09B00310C22 /* ModalStyles.swift in Sources */,
 				A00227181D9B25DF00ABA2DE /* ModalViewController.swift in Sources */,
 				A00227161D9B180B00ABA2DE /* ModalSettings.swift in Sources */,
 				A02609261D99DC5A00C4C6FF /* UIButton+Block.swift in Sources */,
@@ -361,6 +368,7 @@
 			files = (
 				A02608FF1D99DC3800C4C6FF /* ViewController.swift in Sources */,
 				A02608FD1D99DC3800C4C6FF /* AppDelegate.swift in Sources */,
+				A072B7501DA2D17100310C22 /* CustomModalViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

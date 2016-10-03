@@ -8,68 +8,98 @@
 
 import Foundation
 
-struct ModalShadowSettings {
+public struct ModalShadowSettings {
     let opacity:Float
     let radius:CGFloat
     let offset:CGSize
     let color:UIColor
+    public init(opacity:Float, radius:CGFloat, offset:CGSize, color:UIColor) {
+        self.opacity = opacity
+        self.radius = radius
+        self.offset = offset
+        self.color = color
+    }
 }
 
-struct ModalFontSettings {
+public struct ModalFontSettings {
     let titleFont:UIFont
     let titleColor:UIColor
     let descriptionFont:UIFont
     let descriptionColor:UIColor
+    public init(titleFont:UIFont, titleColor:UIColor, descriptionFont:UIFont, descriptionColor:UIColor) {
+        self.titleFont = titleFont
+        self.titleColor = titleColor
+        self.descriptionFont = descriptionFont
+        self.descriptionColor = descriptionColor
+    }
 }
 
-private let defaultTitleFont = UIFont(name: "AppleSDGothicNeo-Medium", size: 14)!
+private let defaultTitleFont = UIFont(name: "AppleSDGothicNeo-Medium", size: 16)!
 private let defaultDescriptionFont = UIFont(name: "AppleSDGothicNeo-Regular", size: 14)!
 
-public typealias ModalSettingsMap = [ModalSetting:Any]
+public typealias ModalSettingsMap = [ModalSetting]
 
-public enum ModalSetting:Int {
-    case hideStatusBar
-    case dismissOnBackgroundTap
-    case dismissOnButtonTap
-    case containerColor
-    case modalColor
-    case cornerRadius
-    case shadowSettings
-    case defaultButtonStyle
-    case fontSettings
-    case preferredModalSize
-    case autoFadeContainer
+
+public enum ModalSetting {
+    case autoFadeContainer(Bool)
+    case containerColor(UIColor)
+    case cornerRadius(CGFloat)
+    case dismissOnBackgroundTap(Bool)
+    case dismissOnButtonTap(Bool)
+    case fontSettings(ModalFontSettings)
+    case hideStatusBar(Bool)
+    case modalColor(UIColor?)
+    case preferredModalSize(CGSize)
+    case shadow(ModalShadowSettings?)
 }
 
 public struct ModalSettings {
     
-    var hideStatusBar:Bool = false
-    var dismissOnBackgroundTap = true
-    var dismissOnButtonTap = true
-    var containerColor:UIColor = UIColor(white: 0.8, alpha: 0.7)
-    var modalColor:UIColor? = .white
+    var autoFadeContainer:Bool = true
+    var containerColor:UIColor = UIColor(white: 0.1, alpha: 0.6)
     var cornerRadius:CGFloat = 8
-    var shadowSettings:ModalShadowSettings? = ModalShadowSettings(opacity: 0.2, radius: 4, offset: CGSize(width:0,height:2), color: .black)
-    var fontSettings = ModalFontSettings(titleFont: defaultTitleFont,
-                                         titleColor: .black,
-                                         descriptionFont: defaultDescriptionFont,
-                                         descriptionColor: .darkGray)
-    var preferredModalSize = CGSize(width: 300, height: 400)
-    var autoFadeContainer = true
+    var dismissOnBackgroundTap:Bool = true
+    var dismissOnButtonTap:Bool = true
+    var fontSettings:ModalFontSettings = ModalFontSettings(titleFont: defaultTitleFont,
+                                                           titleColor: .black,
+                                                           descriptionFont: defaultDescriptionFont,
+                                                           descriptionColor: .darkGray)
+    var hideStatusBar:Bool = false
+    var modalColor:UIColor? = .white
+    var preferredModalSize:CGSize = CGSize(width: 300, height: 400)
+    var shadow:ModalShadowSettings? = ModalShadowSettings(opacity: 0.2,
+                                                          radius: 4,
+                                                          offset: CGSize(width:0,height:2),
+                                                          color: .black)
     
     func withSettings(_ newSettings:ModalSettingsMap) -> ModalSettings {
-        return ModalSettings(
-            hideStatusBar: (newSettings[.hideStatusBar] as? Bool) ?? hideStatusBar,
-            dismissOnBackgroundTap: (newSettings[.dismissOnBackgroundTap] as? Bool) ?? dismissOnBackgroundTap,
-            dismissOnButtonTap: (newSettings[.dismissOnButtonTap] as? Bool) ?? dismissOnButtonTap,
-            containerColor: (newSettings[.containerColor] as? UIColor) ?? containerColor,
-            modalColor: (newSettings[.modalColor] as? UIColor) ?? modalColor,
-            cornerRadius: (newSettings[.cornerRadius] as? CGFloat) ?? cornerRadius,
-            shadowSettings: (newSettings[.shadowSettings] as? ModalShadowSettings) ?? shadowSettings,
-            fontSettings: (newSettings[.fontSettings] as? ModalFontSettings) ?? fontSettings,
-            preferredModalSize: (newSettings[.preferredModalSize] as? CGSize) ?? preferredModalSize,
-            autoFadeContainer: (newSettings[.autoFadeContainer] as? Bool) ?? autoFadeContainer
-        )
+        var mutable = self
+        for setting in newSettings {
+            switch setting {
+            case .autoFadeContainer(let autoFadeContainer):
+                mutable.autoFadeContainer = autoFadeContainer
+            case .containerColor(let containerColor):
+                mutable.containerColor = containerColor
+            case .cornerRadius(let cornerRadius):
+                mutable.cornerRadius = cornerRadius
+            case .dismissOnBackgroundTap(let dismissOnBackgroundTap):
+                mutable.dismissOnBackgroundTap = dismissOnBackgroundTap
+            case .dismissOnButtonTap(let dismissOnButtonTap):
+                mutable.dismissOnButtonTap = dismissOnButtonTap
+            case .fontSettings(let fontSettings):
+                mutable.fontSettings = fontSettings
+            case .hideStatusBar(let hideStatusBar):
+                mutable.hideStatusBar = hideStatusBar
+            case .modalColor(let modalColor):
+                mutable.modalColor = modalColor
+            case .preferredModalSize(let preferredModalSize):
+                mutable.preferredModalSize = preferredModalSize
+            case .shadow(let shadow):
+                mutable.shadow = shadow
+            }
+        }
+        return mutable
     }
     
 }
+

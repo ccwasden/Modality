@@ -33,7 +33,7 @@ public class Modal:ModalViewControllerDelegate, Equatable {
     
     //    public var modalView:UIView
     
-    public init(contentView:UIView, settings:ModalSettingsMap = [:], presenter:ModalPresenter = ModalPresenterCentered()) {
+    public init(contentView:UIView, settings:ModalSettingsMap = [], presenter:ModalPresenter = ModalPresenterCentered()) {
         self.settings = Modality.defaultSettings.withSettings(settings)
         self.contentView = contentView
         self.presenter = presenter
@@ -137,78 +137,4 @@ public class Modal:ModalViewControllerDelegate, Equatable {
 
 
 
-public class ModalWithMessage : Modal {
-    
-    public let messageLabel = UILabel()
-    
-    private let lrPadding:CGFloat = 20
-    private let tbPadding:CGFloat = 40
-    
-    public init(message:String, settings: ModalSettingsMap = [:]) {
-        super.init(contentView: UIView(), settings: settings)
-        setMessage(message)
-        setupContentView()
-    }
-    
-    public func setMessage(_ text:String) {
-        let style = defaultModalParagraphStyle()
-        style.alignment = .center
-        let attr = [NSParagraphStyleAttributeName:style]
-        let font = settings.fontSettings.descriptionFont
-        let color = settings.fontSettings.descriptionColor
-        messageLabel.attributedText = NSAttributedString(string:text, font: font, color: color, attributes:attr)
-    }
-    
-    func setupContentView() {
-        setupMessageLabel()
-        setupTitleView()
-        
-        viewController.modalView.backgroundColor = UIColor.white
-    }
-    
-    func setupMessageLabel() {
-        messageLabel.textAlignment = .center
-        messageLabel.numberOfLines = 0
-        contentView.addSubview(messageLabel)
-        messageLabel.alPinEdgesToSuperviewEdges(withInsets: UIEdgeInsetsMake(0, lrPadding, tbPadding-5, lrPadding), excludingEdge: .top)
-    }
-    
-    func setupTitleView() {
-        if let titleView = buildTitleView() {
-            contentView.addSubview(titleView)
-            if let _ = titleView as? UIImageView {
-                titleView.alPinEdge(toSuperviewEdge: .top, withInset:tbPadding)
-                titleView.alSetDimensions(toSize: CGSize(width: 50, height: 50))
-                titleView.alAlignAxis(toSuperviewAxis: .vertical)
-            }
-            else {
-                titleView.alPinEdgesToSuperviewEdges(withInsets: UIEdgeInsetsMake(tbPadding, lrPadding, 0, lrPadding), excludingEdge: .bottom)
-            }
-            messageLabel.alPin(edge: .top, toEdge: .bottom, ofView: titleView, withOffset: 10)
-        }
-        else {
-            messageLabel.alPinEdge(toSuperviewEdge: .top, withInset: tbPadding)
-        }
-    }
-    
-    public func buildTitleView() -> UIView? {
-        return nil
-    }
-    
-}
 
-public class ModalWithIconTitle: ModalWithMessage {
-    internal var titleIcon = DefaultsStyleKit.imageOfAlertIcon
-    override public func buildTitleView() -> UIView? {
-        let titleView = UIImageView()
-        titleView.image = titleIcon
-        return titleView
-    }
-}
-
-public class ModalAlert: ModalWithIconTitle {
-    override public func buildTitleView() -> UIView? {
-        titleIcon = DefaultsStyleKit.imageOfAlertIcon
-        return super.buildTitleView()
-    }
-}

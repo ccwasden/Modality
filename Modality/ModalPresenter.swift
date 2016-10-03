@@ -15,19 +15,59 @@ public protocol ModalPresenter {
 }
 
 
-public class ModalPresenterRightEdge: ModalPresenter {
+public class ModalPresenterWrapper: ModalPresenter {
+    let internalPresenter:ModalPresenter
     
-    public init() { }
+    init(internalPresenter:ModalPresenter) {
+        self.internalPresenter = internalPresenter
+    }
+    
+    public func presentModal(_ modal:Modal, animated:Bool, completion:@escaping ()->()) {
+        internalPresenter.presentModal(modal, animated: animated, completion: completion)
+    }
+    
+    public func dismissModal(_ modal:Modal, completion:@escaping ()->() ) {
+        internalPresenter.dismissModal(modal, completion: completion)
+    }
+}
+
+public class ModalPresenterRightEdge: ModalPresenterWrapper {
+    public init() {
+        let excludePinEdge = LayoutEdge.left
+        let startEndTransformForWidth:((CGFloat) -> CGAffineTransform) = { width in return CGAffineTransform(translationX: width, y:0) }
+        let internalPresenter = ModalPresenterHorizontalEdge(excludePinEdge: excludePinEdge, startEndTransformForWidth: startEndTransformForWidth)
+        super.init(internalPresenter: internalPresenter)
+    }
+}
+
+public class ModalPresenterLeftEdge: ModalPresenterWrapper {
+    public init() {
+        let excludePinEdge = LayoutEdge.right
+        let startEndTransformForWidth:((CGFloat) -> CGAffineTransform) = { width in return CGAffineTransform(translationX: -width, y:0) }
+        let internalPresenter = ModalPresenterHorizontalEdge(excludePinEdge: excludePinEdge, startEndTransformForWidth: startEndTransformForWidth)
+        super.init(internalPresenter: internalPresenter)
+    }
+}
+
+class ModalPresenterHorizontalEdge: ModalPresenter {
+    
+    let excludePinEdge:LayoutEdge
+    let startEndTransformForWidth:((CGFloat) -> CGAffineTransform)
+    
+    init(excludePinEdge:LayoutEdge, startEndTransformForWidth:@escaping ((CGFloat) -> CGAffineTransform)) {
+        self.excludePinEdge = excludePinEdge
+        self.startEndTransformForWidth = startEndTransformForWidth
+    }
     
     public func presentModal(_ modal: Modal, animated: Bool, completion:@escaping ()->()) {
         let vc = modal.viewController
         let width = modal.settings.preferredModalSize.width
         vc.modalWrapper.alSetDimension( .width, toSize: width)
-        vc.modalWrapper.alPinEdgesToSuperviewEdges(withInsets: .zero, excludingEdge: .left)
+        vc.modalWrapper.alPinEdgesToSuperviewEdges(withInsets: .zero, excludingEdge: excludePinEdge)
         
         if animated {
             vc.view.layoutIfNeeded()
-            vc.modalWrapper.transform = CGAffineTransform(translationX: width, y: 0)
+            vc.modalWrapper.transform = startEndTransformForWidth(width)
             
             UIView.animate(withDuration: 0.2, animations: { () -> Void in
                 vc.modalWrapper.transform = CGAffineTransform.identity
@@ -43,13 +83,15 @@ public class ModalPresenterRightEdge: ModalPresenter {
     public func dismissModal(_ modal: Modal, completion: @escaping (Void) -> Void) {
         let vc = modal.viewController
         UIView.animate(withDuration: 0.2, animations: { () -> Void in
-            vc.modalWrapper.transform = CGAffineTransform(translationX: vc.view.bounds.size.width, y: 0)
+            vc.modalWrapper.transform = self.startEndTransformForWidth(vc.view.bounds.size.width)
         }, completion: { (success) -> Void in
             completion()
         })
     }
     
 }
+
+
 
 public class ModalPresenterCentered: ModalPresenter {
     

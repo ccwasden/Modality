@@ -26,15 +26,6 @@ open class DefaultsStyleKit : NSObject {
         static let mediumTextColor: UIColor = UIColor(red: 0.400, green: 0.400, blue: 0.400, alpha: 1.000)
         static let lightTextColor: UIColor = UIColor(red: 0.667, green: 0.667, blue: 0.667, alpha: 1.000)
         static let gradient: CGGradient = CGGradient(colorsSpace: CGColorSpaceCreateDeviceRGB(), colors: [DefaultsStyleKit.yellow.cgColor, DefaultsStyleKit.red.cgColor] as CFArray, locations: [0, 1])!
-        static var imageOfLogo: UIImage?
-        static var imageOfLetterIcon: UIImage?
-        static var letterIconTargets: [AnyObject]?
-        static var imageOfPopularIcon: UIImage?
-        static var popularIconTargets: [AnyObject]?
-        static var imageOfSelectedIcon: UIImage?
-        static var selectedIconTargets: [AnyObject]?
-        static var imageOfEmailIcon: UIImage?
-        static var emailIconTargets: [AnyObject]?
         static var imageOfAlertIcon: UIImage?
         static var alertIconTargets: [AnyObject]?
         static var imageOfSuccessIcon: UIImage?
@@ -58,56 +49,6 @@ open class DefaultsStyleKit : NSObject {
 
     //// Drawing Methods
 
-    open class func drawLogo() {
-        //// General Declarations
-        let context = UIGraphicsGetCurrentContext()
-
-        //// Bezier Drawing
-        let bezierPath = UIBezierPath()
-        bezierPath.move(to: CGPoint(x: 24.72, y: 10.5))
-        bezierPath.addLine(to: CGPoint(x: 10.6, y: 13.58))
-        bezierPath.addLine(to: CGPoint(x: 8, y: 23.1))
-        bezierPath.addLine(to: CGPoint(x: 10.69, y: 23.24))
-        bezierPath.addLine(to: CGPoint(x: 10.69, y: 33.79))
-        bezierPath.addLine(to: CGPoint(x: 25, y: 39))
-        bezierPath.addLine(to: CGPoint(x: 39.31, y: 33.79))
-        bezierPath.addLine(to: CGPoint(x: 39.31, y: 23.24))
-        bezierPath.addLine(to: CGPoint(x: 42, y: 23.1))
-        bezierPath.addLine(to: CGPoint(x: 39.4, y: 13.58))
-        bezierPath.addLine(to: CGPoint(x: 25.28, y: 10.5))
-        bezierPath.addLine(to: CGPoint(x: 24.72, y: 10.5))
-        bezierPath.close()
-        bezierPath.move(to: CGPoint(x: 27.34, y: 12.79))
-        bezierPath.addLine(to: CGPoint(x: 38.07, y: 15.13))
-        bezierPath.addLine(to: CGPoint(x: 39.79, y: 21.41))
-        bezierPath.addLine(to: CGPoint(x: 28.77, y: 21.99))
-        bezierPath.addLine(to: CGPoint(x: 27.34, y: 12.79))
-        bezierPath.close()
-        bezierPath.move(to: CGPoint(x: 10.21, y: 21.41))
-        bezierPath.addLine(to: CGPoint(x: 11.93, y: 15.13))
-        bezierPath.addLine(to: CGPoint(x: 22.66, y: 12.79))
-        bezierPath.addLine(to: CGPoint(x: 21.23, y: 21.99))
-        bezierPath.addLine(to: CGPoint(x: 10.21, y: 21.41))
-        bezierPath.close()
-        bezierPath.move(to: CGPoint(x: 25.84, y: 14.13))
-        bezierPath.addLine(to: CGPoint(x: 27.36, y: 23.87))
-        bezierPath.addLine(to: CGPoint(x: 37.63, y: 23.33))
-        bezierPath.addLine(to: CGPoint(x: 37.63, y: 32.5))
-        bezierPath.addLine(to: CGPoint(x: 25.84, y: 36.79))
-        bezierPath.addLine(to: CGPoint(x: 25.84, y: 14.13))
-        bezierPath.close()
-        bezierPath.move(to: CGPoint(x: 24.16, y: 14.13))
-        bezierPath.addLine(to: CGPoint(x: 24.16, y: 36.79))
-        bezierPath.addLine(to: CGPoint(x: 12.37, y: 32.5))
-        bezierPath.addLine(to: CGPoint(x: 12.37, y: 23.33))
-        bezierPath.addLine(to: CGPoint(x: 22.64, y: 23.87))
-        bezierPath.addLine(to: CGPoint(x: 24.16, y: 14.13))
-        bezierPath.close()
-        context?.saveGState()
-        bezierPath.addClip()
-        context?.drawLinearGradient(DefaultsStyleKit.gradient, start: CGPoint(x: 25, y: 10.5), end: CGPoint(x: 25, y: 39), options: CGGradientDrawingOptions())
-        context?.restoreGState()
-    }
 
     open class func drawAlert(alertOn: Bool = true) {
 
@@ -243,114 +184,55 @@ open class DefaultsStyleKit : NSObject {
         context?.restoreGState()
     }
 
-    open class func drawLetterIcon() {
-
+    open class func drawXIcon(paramColor: UIColor = UIColor(red: 0.908, green: 0.660, blue: 1.000, alpha: 1.000), fillColor: UIColor = UIColor(red: 0.951, green: 0.951, blue: 0.951, alpha: 1.000), borderColor: UIColor = UIColor(red: 0.799, green: 1.000, blue: 0.347, alpha: 1.000)) {
+        //// General Declarations
+        let context = UIGraphicsGetCurrentContext()
+        
+        //// Oval Drawing
+        let ovalPath = UIBezierPath(ovalIn: CGRect(x: 0.25, y: 0.25, width: 29.5, height: 29.5))
+        fillColor.setFill()
+        ovalPath.fill()
+        borderColor.setStroke()
+        ovalPath.lineWidth = 0.5
+        ovalPath.stroke()
+        
+        
         //// Bezier Drawing
+        context?.saveGState()
+        context?.translateBy(x: 63.77, y: 55.22)
+        
         let bezierPath = UIBezierPath()
-        bezierPath.move(to: CGPoint(x: 9.72, y: 8.04))
-        bezierPath.addLine(to: CGPoint(x: 7.4, y: 2.72))
-        bezierPath.addLine(to: CGPoint(x: 5.07, y: 8.04))
-        bezierPath.addLine(to: CGPoint(x: 9.72, y: 8.04))
+        bezierPath.move(to: CGPoint(x: -48.13, y: -40.23))
+        bezierPath.addLine(to: CGPoint(x: -43.81, y: -44.55))
+        bezierPath.addCurve(to: CGPoint(x: -43.81, y: -44.74), controlPoint1: CGPoint(x: -43.76, y: -44.6), controlPoint2: CGPoint(x: -43.76, y: -44.68))
+        bezierPath.addLine(to: CGPoint(x: -44.26, y: -45.19))
+        bezierPath.addCurve(to: CGPoint(x: -44.45, y: -45.19), controlPoint1: CGPoint(x: -44.31, y: -45.24), controlPoint2: CGPoint(x: -44.4, y: -45.24))
+        bezierPath.addLine(to: CGPoint(x: -48.77, y: -40.87))
+        bezierPath.addLine(to: CGPoint(x: -53.1, y: -45.18))
+        bezierPath.addCurve(to: CGPoint(x: -53.28, y: -45.18), controlPoint1: CGPoint(x: -53.15, y: -45.23), controlPoint2: CGPoint(x: -53.23, y: -45.23))
+        bezierPath.addLine(to: CGPoint(x: -53.73, y: -44.73))
+        bezierPath.addCurve(to: CGPoint(x: -53.73, y: -44.54), controlPoint1: CGPoint(x: -53.78, y: -44.68), controlPoint2: CGPoint(x: -53.78, y: -44.59))
+        bezierPath.addLine(to: CGPoint(x: -49.41, y: -40.22))
+        bezierPath.addLine(to: CGPoint(x: -53.73, y: -35.9))
+        bezierPath.addCurve(to: CGPoint(x: -53.73, y: -35.71), controlPoint1: CGPoint(x: -53.78, y: -35.85), controlPoint2: CGPoint(x: -53.78, y: -35.77))
+        bezierPath.addLine(to: CGPoint(x: -53.28, y: -35.26))
+        bezierPath.addCurve(to: CGPoint(x: -53.1, y: -35.26), controlPoint1: CGPoint(x: -53.23, y: -35.21), controlPoint2: CGPoint(x: -53.15, y: -35.21))
+        bezierPath.addLine(to: CGPoint(x: -48.77, y: -39.58))
+        bezierPath.addLine(to: CGPoint(x: -44.45, y: -35.26))
+        bezierPath.addCurve(to: CGPoint(x: -44.26, y: -35.26), controlPoint1: CGPoint(x: -44.4, y: -35.21), controlPoint2: CGPoint(x: -44.31, y: -35.21))
+        bezierPath.addLine(to: CGPoint(x: -43.81, y: -35.71))
+        bezierPath.addCurve(to: CGPoint(x: -43.81, y: -35.9), controlPoint1: CGPoint(x: -43.76, y: -35.77), controlPoint2: CGPoint(x: -43.76, y: -35.85))
+        bezierPath.addLine(to: CGPoint(x: -48.13, y: -40.23))
         bezierPath.close()
-        bezierPath.move(to: CGPoint(x: 1, y: 13))
-        bezierPath.addLine(to: CGPoint(x: 1, y: 12.64))
-        bezierPath.addCurve(to: CGPoint(x: 2.17, y: 12.08), controlPoint1: CGPoint(x: 1.52, y: 12.59), controlPoint2: CGPoint(x: 1.91, y: 12.4))
-        bezierPath.addCurve(to: CGPoint(x: 3.51, y: 9.47), controlPoint1: CGPoint(x: 2.43, y: 11.76), controlPoint2: CGPoint(x: 2.88, y: 10.89))
-        bezierPath.addLine(to: CGPoint(x: 7.73, y: 0))
-        bezierPath.addLine(to: CGPoint(x: 8.13, y: 0))
-        bezierPath.addLine(to: CGPoint(x: 13.18, y: 10.95))
-        bezierPath.addCurve(to: CGPoint(x: 13.99, y: 12.29), controlPoint1: CGPoint(x: 13.52, y: 11.67), controlPoint2: CGPoint(x: 13.78, y: 12.12))
-        bezierPath.addCurve(to: CGPoint(x: 15, y: 12.64), controlPoint1: CGPoint(x: 14.19, y: 12.46), controlPoint2: CGPoint(x: 14.53, y: 12.58))
-        bezierPath.addLine(to: CGPoint(x: 15, y: 13))
-        bezierPath.addLine(to: CGPoint(x: 9.85, y: 13))
-        bezierPath.addLine(to: CGPoint(x: 9.85, y: 12.64))
-        bezierPath.addCurve(to: CGPoint(x: 10.99, y: 12.46), controlPoint1: CGPoint(x: 10.44, y: 12.59), controlPoint2: CGPoint(x: 10.82, y: 12.53))
-        bezierPath.addCurve(to: CGPoint(x: 11.25, y: 11.93), controlPoint1: CGPoint(x: 11.17, y: 12.39), controlPoint2: CGPoint(x: 11.25, y: 12.21))
-        bezierPath.addCurve(to: CGPoint(x: 11.15, y: 11.43), controlPoint1: CGPoint(x: 11.25, y: 11.84), controlPoint2: CGPoint(x: 11.22, y: 11.67))
-        bezierPath.addCurve(to: CGPoint(x: 10.88, y: 10.68), controlPoint1: CGPoint(x: 11.09, y: 11.19), controlPoint2: CGPoint(x: 10.99, y: 10.94))
-        bezierPath.addLine(to: CGPoint(x: 10.06, y: 8.82))
-        bezierPath.addLine(to: CGPoint(x: 4.73, y: 8.82))
-        bezierPath.addCurve(to: CGPoint(x: 3.78, y: 11.14), controlPoint1: CGPoint(x: 4.2, y: 10.09), controlPoint2: CGPoint(x: 3.89, y: 10.86))
-        bezierPath.addCurve(to: CGPoint(x: 3.63, y: 11.8), controlPoint1: CGPoint(x: 3.68, y: 11.42), controlPoint2: CGPoint(x: 3.63, y: 11.63))
-        bezierPath.addCurve(to: CGPoint(x: 4.05, y: 12.47), controlPoint1: CGPoint(x: 3.63, y: 12.12), controlPoint2: CGPoint(x: 3.77, y: 12.35))
-        bezierPath.addCurve(to: CGPoint(x: 5.01, y: 12.64), controlPoint1: CGPoint(x: 4.22, y: 12.55), controlPoint2: CGPoint(x: 4.54, y: 12.6))
-        bezierPath.addLine(to: CGPoint(x: 5.01, y: 13))
-        bezierPath.addLine(to: CGPoint(x: 1, y: 13))
-        bezierPath.close()
-        DefaultsStyleKit.white.setFill()
+        bezierPath.miterLimit = 4;
+        
+        paramColor.setFill()
         bezierPath.fill()
+        
+        context?.restoreGState()
     }
 
-    open class func drawPopularIcon() {
 
-        //// Bezier Drawing
-        let bezierPath = UIBezierPath()
-        bezierPath.move(to: CGPoint(x: 8, y: 0))
-        bezierPath.addLine(to: CGPoint(x: 5.68, y: 4.57))
-        bezierPath.addLine(to: CGPoint(x: 0.5, y: 5.3))
-        bezierPath.addLine(to: CGPoint(x: 4.25, y: 8.85))
-        bezierPath.addLine(to: CGPoint(x: 3.36, y: 13.87))
-        bezierPath.addLine(to: CGPoint(x: 8, y: 11.5))
-        bezierPath.addLine(to: CGPoint(x: 12.64, y: 13.87))
-        bezierPath.addLine(to: CGPoint(x: 11.75, y: 8.85))
-        bezierPath.addLine(to: CGPoint(x: 15.5, y: 5.3))
-        bezierPath.addLine(to: CGPoint(x: 10.32, y: 4.57))
-        bezierPath.addLine(to: CGPoint(x: 8, y: 0))
-        bezierPath.close()
-        bezierPath.move(to: CGPoint(x: 5.46, y: 8.47))
-        bezierPath.addLine(to: CGPoint(x: 2.92, y: 6.06))
-        bezierPath.addLine(to: CGPoint(x: 6.43, y: 5.57))
-        bezierPath.addLine(to: CGPoint(x: 8, y: 2.47))
-        bezierPath.addLine(to: CGPoint(x: 9.57, y: 5.57))
-        bezierPath.addLine(to: CGPoint(x: 13.08, y: 6.06))
-        bezierPath.addLine(to: CGPoint(x: 10.54, y: 8.47))
-        bezierPath.addLine(to: CGPoint(x: 11.14, y: 11.87))
-        bezierPath.addLine(to: CGPoint(x: 8, y: 10.26))
-        bezierPath.addLine(to: CGPoint(x: 4.86, y: 11.87))
-        bezierPath.addLine(to: CGPoint(x: 5.46, y: 8.47))
-        bezierPath.close()
-        DefaultsStyleKit.white.setFill()
-        bezierPath.fill()
-    }
-
-    open class func drawSelectedIcon() {
-
-        //// Group 3
-        //// Bezier Drawing
-        let bezierPath = UIBezierPath()
-        bezierPath.move(to: CGPoint(x: 8.07, y: 2.19))
-        bezierPath.addCurve(to: CGPoint(x: 3.19, y: 7.07), controlPoint1: CGPoint(x: 5.38, y: 2.19), controlPoint2: CGPoint(x: 3.19, y: 4.38))
-        bezierPath.addCurve(to: CGPoint(x: 8.07, y: 11.96), controlPoint1: CGPoint(x: 3.19, y: 9.77), controlPoint2: CGPoint(x: 5.38, y: 11.96))
-        bezierPath.addCurve(to: CGPoint(x: 12.96, y: 7.07), controlPoint1: CGPoint(x: 10.77, y: 11.96), controlPoint2: CGPoint(x: 12.96, y: 9.77))
-        bezierPath.addCurve(to: CGPoint(x: 8.07, y: 2.19), controlPoint1: CGPoint(x: 12.96, y: 4.38), controlPoint2: CGPoint(x: 10.77, y: 2.19))
-        bezierPath.close()
-        bezierPath.move(to: CGPoint(x: 8.07, y: 13.15))
-        bezierPath.addCurve(to: CGPoint(x: 2, y: 7.07), controlPoint1: CGPoint(x: 4.72, y: 13.15), controlPoint2: CGPoint(x: 2, y: 10.42))
-        bezierPath.addCurve(to: CGPoint(x: 8.07, y: 1), controlPoint1: CGPoint(x: 2, y: 3.72), controlPoint2: CGPoint(x: 4.72, y: 1))
-        bezierPath.addCurve(to: CGPoint(x: 14.15, y: 7.07), controlPoint1: CGPoint(x: 11.42, y: 1), controlPoint2: CGPoint(x: 14.15, y: 3.72))
-        bezierPath.addCurve(to: CGPoint(x: 8.07, y: 13.15), controlPoint1: CGPoint(x: 14.15, y: 10.42), controlPoint2: CGPoint(x: 11.42, y: 13.15))
-        bezierPath.close()
-        DefaultsStyleKit.white.setFill()
-        bezierPath.fill()
-
-
-        //// Bezier 2 Drawing
-        let bezier2Path = UIBezierPath()
-        bezier2Path.move(to: CGPoint(x: 8.07, y: 4.05))
-        bezier2Path.addCurve(to: CGPoint(x: 5.05, y: 7.07), controlPoint1: CGPoint(x: 6.41, y: 4.05), controlPoint2: CGPoint(x: 5.05, y: 5.41))
-        bezier2Path.addCurve(to: CGPoint(x: 8.07, y: 10.09), controlPoint1: CGPoint(x: 5.05, y: 8.74), controlPoint2: CGPoint(x: 6.41, y: 10.09))
-        bezier2Path.addCurve(to: CGPoint(x: 11.09, y: 7.07), controlPoint1: CGPoint(x: 9.74, y: 10.09), controlPoint2: CGPoint(x: 11.09, y: 8.74))
-        bezier2Path.addCurve(to: CGPoint(x: 8.07, y: 4.05), controlPoint1: CGPoint(x: 11.09, y: 5.41), controlPoint2: CGPoint(x: 9.74, y: 4.05))
-        bezier2Path.close()
-        bezier2Path.move(to: CGPoint(x: 8.07, y: 11.28))
-        bezier2Path.addCurve(to: CGPoint(x: 3.86, y: 7.07), controlPoint1: CGPoint(x: 5.75, y: 11.28), controlPoint2: CGPoint(x: 3.86, y: 9.4))
-        bezier2Path.addCurve(to: CGPoint(x: 8.07, y: 2.86), controlPoint1: CGPoint(x: 3.86, y: 4.75), controlPoint2: CGPoint(x: 5.75, y: 2.86))
-        bezier2Path.addCurve(to: CGPoint(x: 12.28, y: 7.07), controlPoint1: CGPoint(x: 10.4, y: 2.86), controlPoint2: CGPoint(x: 12.28, y: 4.75))
-        bezier2Path.addCurve(to: CGPoint(x: 8.07, y: 11.28), controlPoint1: CGPoint(x: 12.28, y: 9.4), controlPoint2: CGPoint(x: 10.4, y: 11.28))
-        bezier2Path.close()
-        DefaultsStyleKit.white.setFill()
-        bezier2Path.fill()
-    }
 
     open class func drawBackBtn(paramColor: UIColor = UIColor(red: 0.908, green: 0.660, blue: 1.000, alpha: 1.000)) {
 
@@ -376,186 +258,8 @@ open class DefaultsStyleKit : NSObject {
         arrowPath.fill()
     }
 
-    open class func drawXIcon(paramColor: UIColor = UIColor(red: 0.908, green: 0.660, blue: 1.000, alpha: 1.000), fillColor: UIColor = UIColor(red: 0.951, green: 0.951, blue: 0.951, alpha: 1.000), borderColor: UIColor = UIColor(red: 0.799, green: 1.000, blue: 0.347, alpha: 1.000)) {
-        //// General Declarations
-        let context = UIGraphicsGetCurrentContext()
-
-        //// Oval Drawing
-        let ovalPath = UIBezierPath(ovalIn: CGRect(x: 0.25, y: 0.25, width: 29.5, height: 29.5))
-        fillColor.setFill()
-        ovalPath.fill()
-        borderColor.setStroke()
-        ovalPath.lineWidth = 0.5
-        ovalPath.stroke()
-
-
-        //// Bezier Drawing
-        context?.saveGState()
-        context?.translateBy(x: 63.77, y: 55.22)
-
-        let bezierPath = UIBezierPath()
-        bezierPath.move(to: CGPoint(x: -48.13, y: -40.23))
-        bezierPath.addLine(to: CGPoint(x: -43.81, y: -44.55))
-        bezierPath.addCurve(to: CGPoint(x: -43.81, y: -44.74), controlPoint1: CGPoint(x: -43.76, y: -44.6), controlPoint2: CGPoint(x: -43.76, y: -44.68))
-        bezierPath.addLine(to: CGPoint(x: -44.26, y: -45.19))
-        bezierPath.addCurve(to: CGPoint(x: -44.45, y: -45.19), controlPoint1: CGPoint(x: -44.31, y: -45.24), controlPoint2: CGPoint(x: -44.4, y: -45.24))
-        bezierPath.addLine(to: CGPoint(x: -48.77, y: -40.87))
-        bezierPath.addLine(to: CGPoint(x: -53.1, y: -45.18))
-        bezierPath.addCurve(to: CGPoint(x: -53.28, y: -45.18), controlPoint1: CGPoint(x: -53.15, y: -45.23), controlPoint2: CGPoint(x: -53.23, y: -45.23))
-        bezierPath.addLine(to: CGPoint(x: -53.73, y: -44.73))
-        bezierPath.addCurve(to: CGPoint(x: -53.73, y: -44.54), controlPoint1: CGPoint(x: -53.78, y: -44.68), controlPoint2: CGPoint(x: -53.78, y: -44.59))
-        bezierPath.addLine(to: CGPoint(x: -49.41, y: -40.22))
-        bezierPath.addLine(to: CGPoint(x: -53.73, y: -35.9))
-        bezierPath.addCurve(to: CGPoint(x: -53.73, y: -35.71), controlPoint1: CGPoint(x: -53.78, y: -35.85), controlPoint2: CGPoint(x: -53.78, y: -35.77))
-        bezierPath.addLine(to: CGPoint(x: -53.28, y: -35.26))
-        bezierPath.addCurve(to: CGPoint(x: -53.1, y: -35.26), controlPoint1: CGPoint(x: -53.23, y: -35.21), controlPoint2: CGPoint(x: -53.15, y: -35.21))
-        bezierPath.addLine(to: CGPoint(x: -48.77, y: -39.58))
-        bezierPath.addLine(to: CGPoint(x: -44.45, y: -35.26))
-        bezierPath.addCurve(to: CGPoint(x: -44.26, y: -35.26), controlPoint1: CGPoint(x: -44.4, y: -35.21), controlPoint2: CGPoint(x: -44.31, y: -35.21))
-        bezierPath.addLine(to: CGPoint(x: -43.81, y: -35.71))
-        bezierPath.addCurve(to: CGPoint(x: -43.81, y: -35.9), controlPoint1: CGPoint(x: -43.76, y: -35.77), controlPoint2: CGPoint(x: -43.76, y: -35.85))
-        bezierPath.addLine(to: CGPoint(x: -48.13, y: -40.23))
-        bezierPath.close()
-        bezierPath.miterLimit = 4;
-
-        paramColor.setFill()
-        bezierPath.fill()
-
-        context?.restoreGState()
-    }
-
-    open class func drawDollarIcon(paramColor: UIColor = UIColor(red: 0.908, green: 0.660, blue: 1.000, alpha: 1.000)) {
-
-        //// Group 3
-        //// Bezier Drawing
-        let bezierPath = UIBezierPath()
-        bezierPath.move(to: CGPoint(x: 19.26, y: 17.58))
-        bezierPath.addCurve(to: CGPoint(x: 18.38, y: 19.93), controlPoint1: CGPoint(x: 19.26, y: 18.49), controlPoint2: CGPoint(x: 18.96, y: 19.27))
-        bezierPath.addCurve(to: CGPoint(x: 16.09, y: 21.15), controlPoint1: CGPoint(x: 17.79, y: 20.59), controlPoint2: CGPoint(x: 17.03, y: 21))
-        bezierPath.addLine(to: CGPoint(x: 16.09, y: 22.71))
-        bezierPath.addCurve(to: CGPoint(x: 16.01, y: 22.92), controlPoint1: CGPoint(x: 16.09, y: 22.8), controlPoint2: CGPoint(x: 16.07, y: 22.87))
-        bezierPath.addCurve(to: CGPoint(x: 15.81, y: 23), controlPoint1: CGPoint(x: 15.96, y: 22.97), controlPoint2: CGPoint(x: 15.89, y: 23))
-        bezierPath.addLine(to: CGPoint(x: 14.61, y: 23))
-        bezierPath.addCurve(to: CGPoint(x: 14.42, y: 22.91), controlPoint1: CGPoint(x: 14.54, y: 23), controlPoint2: CGPoint(x: 14.47, y: 22.97))
-        bezierPath.addCurve(to: CGPoint(x: 14.33, y: 22.71), controlPoint1: CGPoint(x: 14.36, y: 22.86), controlPoint2: CGPoint(x: 14.33, y: 22.79))
-        bezierPath.addLine(to: CGPoint(x: 14.33, y: 21.15))
-        bezierPath.addCurve(to: CGPoint(x: 13.2, y: 20.87), controlPoint1: CGPoint(x: 13.94, y: 21.1), controlPoint2: CGPoint(x: 13.57, y: 21.01))
-        bezierPath.addCurve(to: CGPoint(x: 12.31, y: 20.48), controlPoint1: CGPoint(x: 12.84, y: 20.74), controlPoint2: CGPoint(x: 12.54, y: 20.61))
-        bezierPath.addCurve(to: CGPoint(x: 11.65, y: 20.05), controlPoint1: CGPoint(x: 12.07, y: 20.34), controlPoint2: CGPoint(x: 11.85, y: 20.2))
-        bezierPath.addCurve(to: CGPoint(x: 11.24, y: 19.71), controlPoint1: CGPoint(x: 11.45, y: 19.9), controlPoint2: CGPoint(x: 11.32, y: 19.79))
-        bezierPath.addCurve(to: CGPoint(x: 11.09, y: 19.55), controlPoint1: CGPoint(x: 11.17, y: 19.64), controlPoint2: CGPoint(x: 11.12, y: 19.59))
-        bezierPath.addCurve(to: CGPoint(x: 11.07, y: 19.19), controlPoint1: CGPoint(x: 10.99, y: 19.43), controlPoint2: CGPoint(x: 10.98, y: 19.31))
-        bezierPath.addLine(to: CGPoint(x: 11.98, y: 17.98))
-        bezierPath.addCurve(to: CGPoint(x: 12.18, y: 17.87), controlPoint1: CGPoint(x: 12.02, y: 17.92), controlPoint2: CGPoint(x: 12.09, y: 17.89))
-        bezierPath.addCurve(to: CGPoint(x: 12.4, y: 17.95), controlPoint1: CGPoint(x: 12.27, y: 17.86), controlPoint2: CGPoint(x: 12.34, y: 17.89))
-        bezierPath.addLine(to: CGPoint(x: 12.41, y: 17.97))
-        bezierPath.addCurve(to: CGPoint(x: 14.56, y: 19.09), controlPoint1: CGPoint(x: 13.08, y: 18.56), controlPoint2: CGPoint(x: 13.8, y: 18.93))
-        bezierPath.addCurve(to: CGPoint(x: 15.22, y: 19.16), controlPoint1: CGPoint(x: 14.78, y: 19.14), controlPoint2: CGPoint(x: 15, y: 19.16))
-        bezierPath.addCurve(to: CGPoint(x: 16.48, y: 18.78), controlPoint1: CGPoint(x: 15.69, y: 19.16), controlPoint2: CGPoint(x: 16.11, y: 19.03))
-        bezierPath.addCurve(to: CGPoint(x: 17.02, y: 17.69), controlPoint1: CGPoint(x: 16.84, y: 18.52), controlPoint2: CGPoint(x: 17.02, y: 18.16))
-        bezierPath.addCurve(to: CGPoint(x: 16.89, y: 17.21), controlPoint1: CGPoint(x: 17.02, y: 17.52), controlPoint2: CGPoint(x: 16.97, y: 17.36))
-        bezierPath.addCurve(to: CGPoint(x: 16.59, y: 16.84), controlPoint1: CGPoint(x: 16.8, y: 17.07), controlPoint2: CGPoint(x: 16.7, y: 16.94))
-        bezierPath.addCurve(to: CGPoint(x: 16.07, y: 16.5), controlPoint1: CGPoint(x: 16.48, y: 16.74), controlPoint2: CGPoint(x: 16.31, y: 16.63))
-        bezierPath.addCurve(to: CGPoint(x: 15.49, y: 16.22), controlPoint1: CGPoint(x: 15.84, y: 16.38), controlPoint2: CGPoint(x: 15.64, y: 16.29))
-        bezierPath.addCurve(to: CGPoint(x: 14.78, y: 15.93), controlPoint1: CGPoint(x: 15.34, y: 16.15), controlPoint2: CGPoint(x: 15.1, y: 16.05))
-        bezierPath.addCurve(to: CGPoint(x: 14.24, y: 15.71), controlPoint1: CGPoint(x: 14.55, y: 15.83), controlPoint2: CGPoint(x: 14.37, y: 15.76))
-        bezierPath.addCurve(to: CGPoint(x: 13.7, y: 15.47), controlPoint1: CGPoint(x: 14.11, y: 15.65), controlPoint2: CGPoint(x: 13.93, y: 15.57))
-        bezierPath.addCurve(to: CGPoint(x: 13.14, y: 15.19), controlPoint1: CGPoint(x: 13.47, y: 15.36), controlPoint2: CGPoint(x: 13.28, y: 15.27))
-        bezierPath.addCurve(to: CGPoint(x: 12.64, y: 14.87), controlPoint1: CGPoint(x: 13, y: 15.11), controlPoint2: CGPoint(x: 12.84, y: 15.01))
-        bezierPath.addCurve(to: CGPoint(x: 12.17, y: 14.5), controlPoint1: CGPoint(x: 12.45, y: 14.74), controlPoint2: CGPoint(x: 12.29, y: 14.62))
-        bezierPath.addCurve(to: CGPoint(x: 11.79, y: 14.06), controlPoint1: CGPoint(x: 12.05, y: 14.37), controlPoint2: CGPoint(x: 11.92, y: 14.23))
-        bezierPath.addCurve(to: CGPoint(x: 11.47, y: 13.54), controlPoint1: CGPoint(x: 11.65, y: 13.89), controlPoint2: CGPoint(x: 11.55, y: 13.72))
-        bezierPath.addCurve(to: CGPoint(x: 11.29, y: 12.95), controlPoint1: CGPoint(x: 11.4, y: 13.36), controlPoint2: CGPoint(x: 11.34, y: 13.17))
-        bezierPath.addCurve(to: CGPoint(x: 11.21, y: 12.25), controlPoint1: CGPoint(x: 11.24, y: 12.73), controlPoint2: CGPoint(x: 11.21, y: 12.49))
-        bezierPath.addCurve(to: CGPoint(x: 12.08, y: 10.09), controlPoint1: CGPoint(x: 11.21, y: 11.43), controlPoint2: CGPoint(x: 11.5, y: 10.71))
-        bezierPath.addCurve(to: CGPoint(x: 14.33, y: 8.89), controlPoint1: CGPoint(x: 12.66, y: 9.47), controlPoint2: CGPoint(x: 13.41, y: 9.07))
-        bezierPath.addLine(to: CGPoint(x: 14.33, y: 7.29))
-        bezierPath.addCurve(to: CGPoint(x: 14.42, y: 7.08), controlPoint1: CGPoint(x: 14.33, y: 7.21), controlPoint2: CGPoint(x: 14.36, y: 7.14))
-        bezierPath.addCurve(to: CGPoint(x: 14.61, y: 7), controlPoint1: CGPoint(x: 14.47, y: 7.03), controlPoint2: CGPoint(x: 14.54, y: 7))
-        bezierPath.addLine(to: CGPoint(x: 15.81, y: 7))
-        bezierPath.addCurve(to: CGPoint(x: 16.01, y: 7.08), controlPoint1: CGPoint(x: 15.89, y: 7), controlPoint2: CGPoint(x: 15.96, y: 7.03))
-        bezierPath.addCurve(to: CGPoint(x: 16.09, y: 7.29), controlPoint1: CGPoint(x: 16.07, y: 7.13), controlPoint2: CGPoint(x: 16.09, y: 7.2))
-        bezierPath.addLine(to: CGPoint(x: 16.09, y: 8.86))
-        bezierPath.addCurve(to: CGPoint(x: 17.07, y: 9.06), controlPoint1: CGPoint(x: 16.43, y: 8.89), controlPoint2: CGPoint(x: 16.75, y: 8.96))
-        bezierPath.addCurve(to: CGPoint(x: 17.84, y: 9.36), controlPoint1: CGPoint(x: 17.38, y: 9.16), controlPoint2: CGPoint(x: 17.64, y: 9.26))
-        bezierPath.addCurve(to: CGPoint(x: 18.4, y: 9.7), controlPoint1: CGPoint(x: 18.03, y: 9.46), controlPoint2: CGPoint(x: 18.22, y: 9.57))
-        bezierPath.addCurve(to: CGPoint(x: 18.74, y: 9.95), controlPoint1: CGPoint(x: 18.57, y: 9.82), controlPoint2: CGPoint(x: 18.69, y: 9.91))
-        bezierPath.addCurve(to: CGPoint(x: 18.88, y: 10.08), controlPoint1: CGPoint(x: 18.79, y: 10), controlPoint2: CGPoint(x: 18.84, y: 10.04))
-        bezierPath.addCurve(to: CGPoint(x: 18.92, y: 10.42), controlPoint1: CGPoint(x: 18.98, y: 10.19), controlPoint2: CGPoint(x: 18.99, y: 10.3))
-        bezierPath.addLine(to: CGPoint(x: 18.2, y: 11.72))
-        bezierPath.addCurve(to: CGPoint(x: 18, y: 11.87), controlPoint1: CGPoint(x: 18.16, y: 11.81), controlPoint2: CGPoint(x: 18.09, y: 11.86))
-        bezierPath.addCurve(to: CGPoint(x: 17.76, y: 11.8), controlPoint1: CGPoint(x: 17.92, y: 11.88), controlPoint2: CGPoint(x: 17.84, y: 11.86))
-        bezierPath.addCurve(to: CGPoint(x: 17.63, y: 11.7), controlPoint1: CGPoint(x: 17.74, y: 11.79), controlPoint2: CGPoint(x: 17.7, y: 11.75))
-        bezierPath.addCurve(to: CGPoint(x: 17.29, y: 11.46), controlPoint1: CGPoint(x: 17.57, y: 11.64), controlPoint2: CGPoint(x: 17.45, y: 11.56))
-        bezierPath.addCurve(to: CGPoint(x: 16.77, y: 11.17), controlPoint1: CGPoint(x: 17.13, y: 11.36), controlPoint2: CGPoint(x: 16.95, y: 11.26))
-        bezierPath.addCurve(to: CGPoint(x: 16.11, y: 10.94), controlPoint1: CGPoint(x: 16.59, y: 11.09), controlPoint2: CGPoint(x: 16.37, y: 11.01))
-        bezierPath.addCurve(to: CGPoint(x: 15.36, y: 10.84), controlPoint1: CGPoint(x: 15.86, y: 10.87), controlPoint2: CGPoint(x: 15.6, y: 10.84))
-        bezierPath.addCurve(to: CGPoint(x: 13.99, y: 11.22), controlPoint1: CGPoint(x: 14.8, y: 10.84), controlPoint2: CGPoint(x: 14.34, y: 10.97))
-        bezierPath.addCurve(to: CGPoint(x: 13.46, y: 12.21), controlPoint1: CGPoint(x: 13.63, y: 11.48), controlPoint2: CGPoint(x: 13.46, y: 11.81))
-        bezierPath.addCurve(to: CGPoint(x: 13.53, y: 12.64), controlPoint1: CGPoint(x: 13.46, y: 12.37), controlPoint2: CGPoint(x: 13.48, y: 12.51))
-        bezierPath.addCurve(to: CGPoint(x: 13.79, y: 13.01), controlPoint1: CGPoint(x: 13.58, y: 12.77), controlPoint2: CGPoint(x: 13.67, y: 12.9))
-        bezierPath.addCurve(to: CGPoint(x: 14.14, y: 13.31), controlPoint1: CGPoint(x: 13.92, y: 13.13), controlPoint2: CGPoint(x: 14.03, y: 13.23))
-        bezierPath.addCurve(to: CGPoint(x: 14.64, y: 13.58), controlPoint1: CGPoint(x: 14.25, y: 13.39), controlPoint2: CGPoint(x: 14.42, y: 13.48))
-        bezierPath.addCurve(to: CGPoint(x: 15.17, y: 13.83), controlPoint1: CGPoint(x: 14.86, y: 13.69), controlPoint2: CGPoint(x: 15.04, y: 13.77))
-        bezierPath.addCurve(to: CGPoint(x: 15.79, y: 14.07), controlPoint1: CGPoint(x: 15.31, y: 13.88), controlPoint2: CGPoint(x: 15.51, y: 13.96))
-        bezierPath.addCurve(to: CGPoint(x: 16.51, y: 14.35), controlPoint1: CGPoint(x: 16.1, y: 14.19), controlPoint2: CGPoint(x: 16.34, y: 14.28))
-        bezierPath.addCurve(to: CGPoint(x: 17.18, y: 14.67), controlPoint1: CGPoint(x: 16.67, y: 14.42), controlPoint2: CGPoint(x: 16.9, y: 14.53))
-        bezierPath.addCurve(to: CGPoint(x: 17.85, y: 15.04), controlPoint1: CGPoint(x: 17.46, y: 14.81), controlPoint2: CGPoint(x: 17.68, y: 14.93))
-        bezierPath.addCurve(to: CGPoint(x: 18.39, y: 15.49), controlPoint1: CGPoint(x: 18.01, y: 15.16), controlPoint2: CGPoint(x: 18.19, y: 15.31))
-        bezierPath.addCurve(to: CGPoint(x: 18.86, y: 16.06), controlPoint1: CGPoint(x: 18.6, y: 15.68), controlPoint2: CGPoint(x: 18.75, y: 15.86))
-        bezierPath.addCurve(to: CGPoint(x: 19.14, y: 16.74), controlPoint1: CGPoint(x: 18.97, y: 16.25), controlPoint2: CGPoint(x: 19.06, y: 16.48))
-        bezierPath.addCurve(to: CGPoint(x: 19.26, y: 17.58), controlPoint1: CGPoint(x: 19.22, y: 17), controlPoint2: CGPoint(x: 19.26, y: 17.28))
-        bezierPath.close()
-        paramColor.setFill()
-        bezierPath.fill()
-    }
-
-    open class func drawEmailIcon() {
-        //// Color Declarations
-        let blue = UIColor(red: 0.307, green: 0.683, blue: 0.832, alpha: 1.000)
-
-        //// Group 2
-        //// Bezier Drawing
-        let bezierPath = UIBezierPath()
-        bezierPath.move(to: CGPoint(x: 22.65, y: 24.22))
-        bezierPath.addCurve(to: CGPoint(x: 25, y: 24.97), controlPoint1: CGPoint(x: 22.65, y: 24.22), controlPoint2: CGPoint(x: 23.91, y: 24.97))
-        bezierPath.addCurve(to: CGPoint(x: 27.35, y: 24.22), controlPoint1: CGPoint(x: 26.09, y: 24.97), controlPoint2: CGPoint(x: 27.35, y: 24.22))
-        bezierPath.addLine(to: CGPoint(x: 41.65, y: 15.71))
-        bezierPath.addCurve(to: CGPoint(x: 40.31, y: 15), controlPoint1: CGPoint(x: 41.34, y: 15.28), controlPoint2: CGPoint(x: 40.86, y: 15))
-        bezierPath.addLine(to: CGPoint(x: 9.69, y: 15))
-        bezierPath.addCurve(to: CGPoint(x: 8.35, y: 15.71), controlPoint1: CGPoint(x: 9.14, y: 15), controlPoint2: CGPoint(x: 8.66, y: 15.28))
-        bezierPath.addLine(to: CGPoint(x: 22.65, y: 24.22))
-        bezierPath.close()
-        blue.setFill()
-        bezierPath.fill()
-
-
-        //// Bezier 2 Drawing
-        let bezier2Path = UIBezierPath()
-        bezier2Path.move(to: CGPoint(x: 30.46, y: 24.61))
-        bezier2Path.addLine(to: CGPoint(x: 37.66, y: 33.09))
-        bezier2Path.addCurve(to: CGPoint(x: 37.47, y: 33.3), controlPoint1: CGPoint(x: 37.77, y: 33.22), controlPoint2: CGPoint(x: 37.6, y: 33.41))
-        bezier2Path.addLine(to: CGPoint(x: 28.72, y: 25.85))
-        bezier2Path.addCurve(to: CGPoint(x: 26.97, y: 27.09), controlPoint1: CGPoint(x: 27.78, y: 26.52), controlPoint2: CGPoint(x: 27.14, y: 26.97))
-        bezier2Path.addCurve(to: CGPoint(x: 25, y: 27.95), controlPoint1: CGPoint(x: 26.04, y: 27.72), controlPoint2: CGPoint(x: 25.49, y: 27.95))
-        bezier2Path.addCurve(to: CGPoint(x: 23.03, y: 27.09), controlPoint1: CGPoint(x: 24.51, y: 27.95), controlPoint2: CGPoint(x: 23.96, y: 27.72))
-        bezier2Path.addCurve(to: CGPoint(x: 21.28, y: 25.85), controlPoint1: CGPoint(x: 22.86, y: 26.97), controlPoint2: CGPoint(x: 22.22, y: 26.52))
-        bezier2Path.addLine(to: CGPoint(x: 12.53, y: 33.3))
-        bezier2Path.addCurve(to: CGPoint(x: 12.34, y: 33.09), controlPoint1: CGPoint(x: 12.4, y: 33.41), controlPoint2: CGPoint(x: 12.23, y: 33.22))
-        bezier2Path.addLine(to: CGPoint(x: 19.54, y: 24.61))
-        bezier2Path.addCurve(to: CGPoint(x: 8.04, y: 16.41), controlPoint1: CGPoint(x: 15.8, y: 21.95), controlPoint2: CGPoint(x: 10.16, y: 17.93))
-        bezier2Path.addCurve(to: CGPoint(x: 8, y: 16.78), controlPoint1: CGPoint(x: 8.01, y: 16.53), controlPoint2: CGPoint(x: 8, y: 16.65))
-        bezier2Path.addLine(to: CGPoint(x: 8, y: 35.22))
-        bezier2Path.addCurve(to: CGPoint(x: 9.69, y: 37), controlPoint1: CGPoint(x: 8, y: 36.2), controlPoint2: CGPoint(x: 8.76, y: 37))
-        bezier2Path.addLine(to: CGPoint(x: 40.31, y: 37))
-        bezier2Path.addCurve(to: CGPoint(x: 42, y: 35.22), controlPoint1: CGPoint(x: 41.24, y: 37), controlPoint2: CGPoint(x: 42, y: 36.2))
-        bezier2Path.addLine(to: CGPoint(x: 42, y: 16.78))
-        bezier2Path.addCurve(to: CGPoint(x: 41.96, y: 16.41), controlPoint1: CGPoint(x: 42, y: 16.65), controlPoint2: CGPoint(x: 41.99, y: 16.53))
-        bezier2Path.addCurve(to: CGPoint(x: 30.46, y: 24.61), controlPoint1: CGPoint(x: 39.84, y: 17.93), controlPoint2: CGPoint(x: 34.2, y: 21.95))
-        bezier2Path.close()
-        blue.setFill()
-        bezier2Path.fill()
-    }
+    
+ 
 
     open class func drawAlertIcon() {
 
@@ -637,19 +341,7 @@ open class DefaultsStyleKit : NSObject {
 
     //// Generated Images
 
-    open class var imageOfLogo: UIImage {
-        if Cache.imageOfLogo != nil {
-            return Cache.imageOfLogo!
-        }
-
-        UIGraphicsBeginImageContextWithOptions(CGSize(width: 50, height: 50), false, 0)
-            DefaultsStyleKit.drawLogo()
-
-        Cache.imageOfLogo = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
-
-        return Cache.imageOfLogo!
-    }
+    
 
     open class func imageOfAlert(alertOn: Bool = true) -> UIImage {
         UIGraphicsBeginImageContextWithOptions(CGSize(width: 30, height: 30), false, 0)
@@ -681,48 +373,6 @@ open class DefaultsStyleKit : NSObject {
         return imageOfSmallArrow!
     }
 
-    open class var imageOfLetterIcon: UIImage {
-        if Cache.imageOfLetterIcon != nil {
-            return Cache.imageOfLetterIcon!
-        }
-
-        UIGraphicsBeginImageContextWithOptions(CGSize(width: 16, height: 14), false, 0)
-            DefaultsStyleKit.drawLetterIcon()
-
-        Cache.imageOfLetterIcon = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
-
-        return Cache.imageOfLetterIcon!
-    }
-
-    open class var imageOfPopularIcon: UIImage {
-        if Cache.imageOfPopularIcon != nil {
-            return Cache.imageOfPopularIcon!
-        }
-
-        UIGraphicsBeginImageContextWithOptions(CGSize(width: 16, height: 14), false, 0)
-            DefaultsStyleKit.drawPopularIcon()
-
-        Cache.imageOfPopularIcon = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
-
-        return Cache.imageOfPopularIcon!
-    }
-
-    open class var imageOfSelectedIcon: UIImage {
-        if Cache.imageOfSelectedIcon != nil {
-            return Cache.imageOfSelectedIcon!
-        }
-
-        UIGraphicsBeginImageContextWithOptions(CGSize(width: 16, height: 14), false, 0)
-            DefaultsStyleKit.drawSelectedIcon()
-
-        Cache.imageOfSelectedIcon = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
-
-        return Cache.imageOfSelectedIcon!
-    }
-
     open class func imageOfBackBtn(paramColor: UIColor = UIColor(red: 0.908, green: 0.660, blue: 1.000, alpha: 1.000)) -> UIImage {
         UIGraphicsBeginImageContextWithOptions(CGSize(width: 30, height: 30), false, 0)
             DefaultsStyleKit.drawBackBtn(paramColor: paramColor)
@@ -741,30 +391,6 @@ open class DefaultsStyleKit : NSObject {
         UIGraphicsEndImageContext()
 
         return imageOfXIcon!
-    }
-
-    open class func imageOfDollarIcon(paramColor: UIColor = UIColor(red: 0.908, green: 0.660, blue: 1.000, alpha: 1.000)) -> UIImage {
-        UIGraphicsBeginImageContextWithOptions(CGSize(width: 30, height: 30), false, 0)
-            DefaultsStyleKit.drawDollarIcon(paramColor: paramColor)
-
-        let imageOfDollarIcon = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
-
-        return imageOfDollarIcon!
-    }
-
-    open class var imageOfEmailIcon: UIImage {
-        if Cache.imageOfEmailIcon != nil {
-            return Cache.imageOfEmailIcon!
-        }
-
-        UIGraphicsBeginImageContextWithOptions(CGSize(width: 50, height: 50), false, 0)
-            DefaultsStyleKit.drawEmailIcon()
-
-        Cache.imageOfEmailIcon = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
-
-        return Cache.imageOfEmailIcon!
     }
 
     open class var imageOfAlertIcon: UIImage {

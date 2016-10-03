@@ -10,6 +10,9 @@ import UIKit
 
 public class Modality {
     
+    public var alertImage = DefaultsStyleKit.imageOfAlertIcon
+    public var successImage = DefaultsStyleKit.imageOfSuccessIcon
+    
     public static var defaultSettings = ModalSettings()
     public var defaultButtonBuilder:((String)->ModalButton) = { return DefaultButtonType(text:$0, modalOnPressed:nil).modalButton }
     
@@ -23,9 +26,41 @@ public class Modality {
     
     static let shared = Modality()
     
-    
     public class func showAlert(_ message:String, buttons:[ModalButtonType]) {
         let modal = ModalAlert(message: message)
+        for button in buttons {
+            modal.addButton(button)
+        }
+        modal.show()
+    }
+    
+    public class func showSuccess(_ message:String, buttons:[ModalButtonType]) {
+        let modal = ModalSuccess(message: message)
+        for button in buttons {
+            modal.addButton(button)
+        }
+        modal.show()
+    }
+    
+    public class func showMessage(title:String?, message:String, buttons:[ModalButtonType]) {
+        if let title = title {
+            showTitleMessage(title: title, message: message, buttons: buttons)
+        }
+        else {
+            showMessage(message: message, buttons: buttons)
+        }
+    }
+    
+    class func showTitleMessage(title:String, message:String, buttons:[ModalButtonType]) {
+        let modal = ModalTitleMessage(title: title, message: message)
+        for button in buttons {
+            modal.addButton(button)
+        }
+        modal.show()
+    }
+    
+    class func showMessage(message:String, buttons:[ModalButtonType]) {
+        let modal = ModalWithMessage( message: message)
         for button in buttons {
             modal.addButton(button)
         }
